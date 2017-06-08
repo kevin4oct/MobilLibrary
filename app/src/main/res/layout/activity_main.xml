@@ -1,18 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hebth.myapplication.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.hebth.mobilelibrary.ui.main.activitys.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toobar_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/container_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8" />
+
+    <RadioGroup
+        android:id="@+id/control_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_home_control"
+            style="@style/radiobutton_main"
+            android:checked="true"
+            android:drawableTop="@mipmap/ic_launcher_round"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/rb_ebook_control"
+            style="@style/radiobutton_main"
+            android:drawableTop="@mipmap/ic_launcher_round"
+            android:text="电子资源" />
+
+        <RadioButton
+            android:id="@+id/rb_library_control"
+            style="@style/radiobutton_main"
+            android:drawableTop="@mipmap/ic_launcher_round"
+            android:text="图书馆指南" />
+
+        <RadioButton
+            android:id="@+id/rb_mine_control"
+            style="@style/radiobutton_main"
+            android:drawableTop="@mipmap/ic_launcher_round"
+            android:text="我的" />
+
+    </RadioGroup>
+</LinearLayout>
+

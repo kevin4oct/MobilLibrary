@@ -1,4 +1,4 @@
-package com.hebth.myapplication;
+package com.hebth.mobilelibrary;
 
 import org.junit.Test;
 

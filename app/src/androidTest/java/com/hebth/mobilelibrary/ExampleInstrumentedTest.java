@@ -1,4 +1,4 @@
-package com.hebth.myapplication;
+package com.hebth.mobilelibrary;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
