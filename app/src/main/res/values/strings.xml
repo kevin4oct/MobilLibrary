@@ -1,4 +1,102 @@
 <resources>
     <string name="app_name">天海移动图书馆</string>
-    <string name="book_content"><![CDATA[登录 | 注册  羽吉公      目录视图     摘要视图     订阅  CoordinatorLayout，协调者布局 2016-11-02 17:50 1951人阅读 评论(0) 收藏 举报 分类： Android（17）  目录(?)[+]  CoordinatorLayout，中文译作协调者布局，光听这名字你可能很难判断出协调者布局有什么特点，那么我们来看看下面一张图片：  由于CSDN对图片大小的要求，我只能录制一个快速播放的动画，请大家见谅。但是显示效果大家应该都看到了，就是当在页面的上方有一个图片，当底部的控件向上滑动时，上方的图片慢慢的折叠起来，最终变成一个Toolbar，显示在页面的最上方。就这样一个简单的效果，如果自己用动画写也不是不可以，但是太麻烦，我们今天就来看看Google提供的CoordinatorLayout控件，只需要在布局文件中简单折腾两下，Java代码几乎不用写任何东西，就能实现这样的效果。  OK，那就开始吧。 1.整体概述 1.添加依赖  很明显这些都是design包中的，因此我们需要添加依赖：  [java] view plain copy  print?在CODE上查看代码片派生到我的代码片      compile \'com.android.support:design:23.1.1\'    2.页面分析  使用CoordinatorLayout时，我们的页面整体上分为两部分，一部分是上面折叠的东东，还有一部分是下面的滚动控件。上面折叠的这一部分我们需要写在一个AppBarLayout中，下面的滚动控件你有两种选择，要么使用NestedScrollView，要么使用RecyclerView。其他的滚动控件都是不可以实现的哦。 2.具体实现方式 1.AppBarLayout中的写法  整个头部我们都写在AppBarLayout中，但是要实现折叠效果还需要CollapsingToolbarLayout布局，事实上，我们在AppBarLayout中放一个CollapsingToolbarLayout，头部的ImageView和Toolbar都写在CollapsingToolbarLayout中，一个简单的示例如下：  [java] view plain copy  print?在CODE上查看代码片派生到我的代码片      <android.support.design.widget.AppBarLayout           android:layout_width=\"match_parent\"           android:layout_height=\"200dp\">                  <android.support.design.widget.CollapsingToolbarLayout               android:layout_width=\"match_parent\"               android:layout_height=\"200dp\"               app:contentScrim=\"@color/colorPrimary\"               app:layout_scrollFlags=\"scroll|enterAlwaysCollapsed|exitUntilCollapsed\">                      <ImageView                   android:layout_width=\"match_parent\"                   android:layout_height=\"match_parent\"                   android:scaleType=\"centerCrop\"                   android:src=\"@drawable/p1\"/>                      <android.support.v7.widget.Toolbar                   android:id=\"@+id/tool_bar\"                   android:layout_width=\"match_parent\"                   android:layout_height=\"?attr/actionBarSize\"></android.support.v7.widget.Toolbar>           </android.support.design.widget.CollapsingToolbarLayout>       </android.support.design.widget.AppBarLayout>     博客开始图片头部的显示效果就是这几行代码实现的。那么这里有几个属性我需要介绍一下：  app:contentScrim=\"@color/colorPrimary\"表示当ImageView折叠后Toolbar的颜色，这里的颜色我们不可以直接在Toolbar中设置，因为Toolbar一开始是透明的，只有当ImageView折叠到Toolbar的高度时Toolbar才变为蓝色的。  app:layout_scrollFlags是一个非常重要的属性，它里边的取值主要有五种，下面我分别来解释：          1.scroll 表示CollapsingToolbarLayout可以滚动（不设置的话头部的ImageView将不能折叠）         2.enterAlways 表示底部的滚动控件只要向下滚动，头部就显示出来         3.enterAlwaysCollapsed 表示当底部滚动控件滚动见顶时，头部显示出来         4.exitUntilCollapsed 表示头部折叠到最小高度时（Toolbar的高度），就不再折叠         5.snap 表示在滑动过程中如果停止滑动，则头部会就近折叠（要么恢复原状，要么折叠成一个Toolbar）   OK，大家看博客开始时的gif图，当图片折叠时，其实是图片的顶部一直在慢慢的隐藏，底部并没有动，那么如果你想要修改这个效果，可以使用下面的属性：  app:layout_collapseMode=\"parallax\"表示ImageView的折叠和CollapsingToolbarLayout的折叠不同步，那么这个不同步到底是怎样一个不同步法呢？还有另外一个参数来设置不同步的参数，如下：  app:layout_collapseParallaxMultiplier=\"0.5\"表示视觉乘数，该数值的取值为0～1，数值越大，视觉差越大（如果这里的值为0，则在头部折叠的过程中，ImageView的顶部在慢慢隐藏，底部不动，如果这里的值为1，ImageView的顶部不懂，底部慢慢隐藏，如果这里的取值为0～1之间，则在折叠的过程中，ImageView的顶部和底部都会隐藏，但是头部和底部隐藏的快慢是不一样的，具体速度和视觉乘数有关）  app:layout_collapseMode这个属性还有一个取值，是pin，该属性表示当折叠完成时将该控件放在页面的头部.  OK ，配合上上面这几种属性，我们的一个较完整的头部应该是这样的：  [java] view plain copy  print?在CODE上查看代码片派生到我的代码片      <android.support.design.widget.AppBarLayout           android:layout_width=\"match_parent\"           android:layout_height=\"200dp\">                  <android.support.design.widget.CollapsingToolbarLayout               android:layout_width=\"match_parent\"               android:layout_height=\"200dp\"               app:contentScrim=\"@color/colorPrimary\"               app:layout_scrollFlags=\"scroll|enterAlwaysCollapsed|exitUntilCollapsed\">                      <ImageView                   android:layout_width=\"match_parent\"                   android:layout_height=\"match_parent\"                   android:scaleType=\"centerCrop\"                   android:src=\"@drawable/p1\"                   app:layout_collapseMode=\"parallax\"                   app:layout_collapseParallaxMultiplier=\"0.5\"/>                      <android.support.v7.widget.Toolbar                   android:id=\"@+id/tool_bar\"                   android:layout_width=\"match_parent\"                   android:layout_height=\"?attr/actionBarSize\"                   app:layout_collapseMode=\"pin\"></android.support.v7.widget.Toolbar>           </android.support.design.widget.CollapsingToolbarLayout>       </android.support.design.widget.AppBarLayout>     另一方面，当我们在使用CollapsingToolbarLayout的时候，我们一般也不再是通过Toolbar来给页面设置title了，因为这个title能够实现的效果非常有限，那么我们怎么给页面设置Title呢？我们可以通过给CollapsingToolbarLayout设置如下属性来解决Title的问题：  app:title=\"MyToolBar\" 表示给页面设置一个Toolbar app:collapsedTitleGravity=\"right\" 表示折叠之后Title显示的位置 app:expandedTitleGravity=\"left|bottom\" 表示展开时Title显示的位置  如此设置之后我们来看一下头部显示的效果：  大家看到，当头部折叠之后，Title显示在了头部的右边。  OK，最后我们在来看一遍头部的完整代码：  [java] view plain copy  print?在CODE上查看代码片派生到我的代码片      <android.support.design.widget.AppBarLayout           android:layout_width=\"match_parent\"           android:layout_height=\"200dp\">                  <android.support.design.widget.CollapsingToolbarLayout               android:layout_width=\"match_parent\"               android:layout_height=\"200dp\"               app:title=\"MyToolBar\"               app:collapsedTitleGravity=\"right\"               app:expandedTitleGravity=\"left|bottom\"               app:contentScrim=\"@color/colorPrimary\"               app:layout_scrollFlags=\"scroll|enterAlwaysCollapsed|exitUntilCollapsed\">                      <ImageView                   android:layout_width=\"match_parent\"                   android:layout_height=\"match_parent\"                   android:scaleType=\"centerCrop\"                   android:src=\"@drawable/p1\"                   app:layout_collapseMode=\"parallax\"                   app:layout_collapseParallaxMultiplier=\"0.5\"/>                      <android.support.v7.widget.Toolbar                   android:id=\"@+id/tool_bar\"                   android:layout_width=\"match_parent\"                   android:layout_height=\"?attr/actionBarSize\"                   app:layout_collapseMode=\"pin\"></android.support.v7.widget.Toolbar>           </android.support.design.widget.CollapsingToolbarLayout>       </android.support.design.widget.AppBarLayout>      2.底部滚动控件的写法  底部控件你有两种选择，一中是直接用RecyclerView，还有一种是用NestedScrollView，这里我选用NestedScrollView来做底部的滚动控件，如下：  [java] view plain copy  print?在CODE上查看代码片派生到我的代码片      <android.support.v4.widget.NestedScrollView           android:layout_width=\"match_parent\"           android:layout_height=\"match_parent\"           app:layout_behavior=\"@string/appbar_scrolling_view_behavior\">                  <TextView               android:layout_width=\"match_parent\"               android:layout_height=\"match_parent\"               android:text=\"@string/book_content\"/>       </android.support.v4.widget.NestedScrollView>     整体上来说还是很简单的，TextView要能够滚动，用一个NestedScrollView包裹起来即可，但是这里多了一个app:layout_behavior属性，这个属性的值是一个字符串，追踪字符串的值发现字符串的值如下：  android.support.design.widget.AppBarLayout$ScrollingViewBehavior  这其实是一个类的地址，该类就是就是CoordinatorLayout中上下两部分配合工作的具体实现代码。  OK，整体上就是这样，最后大家要记得在使用CoordinatorLayout时一定要先将ActionBar隐藏起来，修改styles.xml文件，如下：  [java] view plain copy  print?在CODE上查看代码片派生到我的代码片      <!-- Base application theme. -->       <style name=\"AppTheme\" parent=\"Theme.AppCompat.Light.DarkActionBar\">           <!-- Customize your theme here. -->           <item name=\"colorPrimary\">@color/colorPrimary</item>           <item name=\"colorPrimaryDark\">@color/colorPrimaryDark</item>           <item name=\"colorAccent\">@color/colorAccent</item>           <item name=\"windowActionBar\">false</item>           <item name=\"windowNoTitle\">true</item>       </style>     OK，最后，我们再来看一眼完整的代码：  [java] view plain copy  print?在CODE上查看代码片派生到我的代码片      <?xml version=\"1.0\" encoding=\"utf-8\"?>       <android.support.design.widget.CoordinatorLayout           xmlns:android=\"http://schemas.android.com/apk/res/android\"           xmlns:app=\"http://schemas.android.com/apk/res-auto\"           xmlns:tools=\"http://schemas.android.com/tools\"           android:layout_width=\"match_parent\"           android:layout_height=\"match_parent\"           tools:context=\"org.mobiletrain.coordinatorlayout.MainActivity\">                  <android.support.design.widget.AppBarLayout               android:layout_width=\"match_parent\"               android:layout_height=\"200dp\">                      <android.support.design.widget.CollapsingToolbarLayout                   android:layout_width=\"match_parent\"                   android:layout_height=\"200dp\"                   app:title=\"MyToolBar\"                   app:collapsedTitleGravity=\"right\"                   app:expandedTitleGravity=\"left|bottom\"                   app:contentScrim=\"@color/colorPrimary\"                   app:layout_scrollFlags=\"scroll|enterAlwaysCollapsed|exitUntilCollapsed\">                          <ImageView                       android:layout_width=\"match_parent\"                       android:layout_height=\"match_parent\"                       android:scaleType=\"centerCrop\"                       android:src=\"@drawable/p1\"                       app:layout_collapseMode=\"parallax\"                       app:layout_collapseParallaxMultiplier=\"0.5\"/>                          <android.support.v7.widget.Toolbar                       android:id=\"@+id/tool_bar\"                       android:layout_width=\"match_parent\"                       android:layout_height=\"?attr/actionBarSize\"                       app:layout_collapseMode=\"pin\"></android.support.v7.widget.Toolbar>               </android.support.design.widget.CollapsingToolbarLayout>           </android.support.design.widget.AppBarLayout>                  <android.support.v4.widget.NestedScrollView               android:layout_width=\"match_parent\"               android:layout_height=\"match_parent\"               app:layout_behavior=\"@string/appbar_scrolling_view_behavior\">                      <TextView                   android:layout_width=\"match_parent\"                   android:layout_height=\"match_parent\"                   android:text=\"@string/book_content\"/>           </android.support.v4.widget.NestedScrollView>       </android.support.design.widget.CoordinatorLayout>    顶     3  踩     0           上一篇关于上下文     下一篇SlidingMenu    相关文章推荐      • 通过来模仿稀土掘金个人页面的布局来学习使用CoordinatorLayout     • CoordinatorLayout +RecyclerView+加载不同布局的item     • Android中CoordinatorLayout(协调布局)的使用     • Android 协调者布局title 字体大小颜色修改,设置布局为最上层     • Android 协调者布局 CoordinatorLayout简单认识      • Material Design之CoordinatorLayout+AppBarLayout实现上滑隐藏ToolBar     • CoordinatorLayout配合AppBarLayout,Toolbar和TabLayout的使用     • CoordinatorLayout 属性详解 和 Behavior 的使用     • MaterialDesign设计（中）     • NestedScrolling机制(四)——最后一个例子  参考知识库  img     Android知识库      34737关注|3135收录  img     Java 知识库      27775关注|3746收录  img     Java EE知识库      18925关注|1408收录  img     Java SE知识库      26678关注|578收录  猜你在找     【Android APP开发】Android高级商业布局快速实现     Android开发高级组件与框架——APP上线     Android自定义控件项目实战——壁纸app     Android App性能调优、内存泄露检测     Android Material Design 新控件     Android高级界面控件难点精讲     Android APP开发之真机调试环境实现     Android5.0新特征详解(Material Design入门篇)     如何快速开发一款具有类微信即时通讯功能App     Android《自定义控件》视频，震撼发布！  关闭 查看评论    暂无评论  您还没有登录,请[登录]或[注册] * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场 核心技术类目 全部主题 Hadoop AWS 移动游戏 Java Android iOS Swift 智能硬件 Docker OpenStack VPN Spark ERP IE10 Eclipse CRM JavaScript 数据库 Ubuntu NFC WAP jQuery BI HTML5 Spring Apache .NET API HTML SDK IIS Fedora XML LBS Unity Splashtop UML components Windows Mobile Rails QEMU KDE Cassandra CloudStack FTC coremail OPhone CouchBase 云计算 iOS6 Rackspace Web App SpringSide Maemo Compuware 大数据 aptech Perl Tornado Ruby Hibernate ThinkPHP HBase Pure Solr Angular Cloud Foundry Redis Scala Django Bootstrap      个人资料      [访问我的空间]     羽吉公     2         访问：40613次         积分：1314         等级：         排名：千里之外         原创：88篇         转载：16篇         译文：1篇         评论：2条      文章搜索      文章分类      程序设计项目(21)     算法(19)     Java(30)     文章(1)     Android(18)     Linux(1)      文章存档      2017年05月(1)     2017年03月(4)     2017年02月(4)     2016年12月(5)     2016年11月(2)     展开      阅读排行       CoordinatorLayout，协调者布局(1950)     输入年月日,判断是该年的第几天,还可以进一步判断从1年开始的第几天(1809)     Tablayout 设置字体大小(1786)     java华氏温度与摄氏度的互相转换(1770)     Java 输入一个日期,判断是星期几(1202)     Java 输入一个大写字符，如F 比如 输入:F 输出 FEDCBA EDCBAB DCBABC CBABCD BABCDE ABCDEF 输入 B 输出: BA AB(1072)     将数组中的数逆序重新存放(912)     听写英语单词的小程序(893)     已经排好的数组,输入一个数,按原来的规律插入数组中;(767)     课后习题9--4(729)      评论排行      第四周项目-2(1)     练习(1)     练习而已(0)     8--1(0)     7--678(0)     7--5(0)     共有5中颜色的球若干个，取3个球，每个颜色都不同，问有多少种取法;(0)     7--4(和7--3的功能一样，只是用函数调用方式)(0)     7--3(输入与输出学生的学号姓名与成绩)(0)     This version of android studio is incompatible with the gradle version used.解决办法(0)      推荐文章          * 5月书讯：流畅的Python，终于等到你！         * JSON最佳实践         * InfiniBand技术和协议架构分析         * Android 中解决破解签名验证之后导致的登录授权失效问题         * 《Real-Time Rendering 3rd》 提炼总结——图形渲染与视觉外观         * CSDN日报20170607 ——《别混淆你想要什么和能否实现》      最新评论      第四周项目-2      青年小篆: 楼主的学习精神值得学习。     练习      迂者-贺利坚: 访过……用上“插入代码”工具      公司简介     |     招贤纳士     |     广告服务     |     联系方式     |     版权声明     |     法律顾问     |     问题报告     |     合作伙伴     |     论坛反馈     网站客服     杂志客服     微博客服     webmaster@csdn.net     400-660-0108|北京创新乐知信息技术有限公司 版权所有|江苏知之为计算机有限公司|江苏乐知网络技术有限公司     京 ICP 证 09002463 号|Copyright © 1999-2017, CSDN.NET, All Rights Reserved      GongshangLogo]]></string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">松开刷新</string>
+    <string name="pull_to_refresh_refreshing_label">正在刷新\u2026</string>
+    <string name="pull_to_refresh_footer_release_label">松开加载更多</string>
+    <string name="pull_to_refresh_footer_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_footer_refreshing_label">加载中\u2026</string>
 </resources>

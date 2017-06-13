@@ -20,4 +20,9 @@ public class LibraryFragment extends BaseFragment {
     public void initView() {
 
     }
+
+    @Override
+    public void initListener() {
+
+    }
 }

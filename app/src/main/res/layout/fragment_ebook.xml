@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout_ebook"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="ebookfragment" />
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        app:tabIndicatorColor="#00FF44"
+        app:tabSelectedTextColor="#000000"
+        app:tabTextColor="#6e6e6e" />
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_ebook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
+
+
+    <!--<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:orientation="vertical">--><!--<android.support.design.widget.AppBarLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content">--><!--&lt;!&ndash;--><!--app:layout_scrollFlags--><!--1.scroll 表示CollapsingToolbarLayout可以滚动（不设置的话头部的ImageView将不能折叠）--><!--2.enterAlways 表示底部的滚动控件只要向下滚动，头部就显示出来--><!--3.enterAlwaysCollapsed 表示当底部滚动控件滚动见顶时，头部显示出来--><!--4.exitUntilCollapsed 表示头部折叠到最小高度时（Toolbar的高度），就不再折叠--><!--5.snap 表示在滑动过程中如果停止滑动，则头部会就近折叠（要么恢复原状，要么折叠成一个Toolbar）--><!--&ndash;&gt;--><!--<android.support.design.widget.CollapsingToolbarLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="150dp"--><!--app:collapsedTitleGravity="center"--><!--app:contentScrim="@color/colorPrimary"--><!--app:expandedTitleGravity="right|bottom"--><!--app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed|snap"--><!--app:title="电子资源">--><!--<ImageView--><!--android:id="@+id/vp_title_main"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:src="@mipmap/ic_launcher" />--><!--<android.support.v7.widget.Toolbar--><!--android:id="@+id/tool_bar"--><!--android:layout_width="match_parent"--><!--android:layout_height="?attr/actionBarSize"--><!--app:layout_collapseMode="pin" />--><!--</android.support.design.widget.CollapsingToolbarLayout>--><!--<android.support.design.widget.TabLayout--><!--android:id="@+id/tabLayout_ebook"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--app:tabIndicatorColor="#FFFFFFFF"--><!--app:tabSelectedTextColor="#FF888888"--><!--app:tabTextColor="#FFFFFFFF" />--><!--</android.support.design.widget.AppBarLayout>--><!--<android.support.v4.widget.NestedScrollView--><!--android:id="@+id/nestedScrollView_ebook"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--app:layout_behavior="@string/appbar_scrolling_view_behavior">--><!--<com.hebth.mobilelibrary.myview.WrapContentHeightViewpager--><!--android:id="@+id/vp_ebook"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="#00FFFF" />--><!--</android.support.v4.widget.NestedScrollView>--><!--&lt;!&ndash;<android.support.design.widget.FloatingActionButton&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:layout_margin="20dp"&ndash;&gt;--><!--&lt;!&ndash;android:clickable="true"&ndash;&gt;--><!--&lt;!&ndash;android:src="@mipmap/ic_launcher"&ndash;&gt;--><!--&lt;!&ndash;app:layout_anchor="@id/appbar"&ndash;&gt;--><!--&lt;!&ndash;app:layout_anchorGravity="bottom|right|end" />&ndash;&gt;--><!--</android.support.design.widget.CoordinatorLayout>-->

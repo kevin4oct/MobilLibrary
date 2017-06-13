@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_title_news"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="7"
+        android:layout_marginStart="15dp"
+        android:text="水色群青——李群水彩作品展” 在河北"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_time_news"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:text="2017.05.02" />
+
+</LinearLayout>

@@ -4,13 +4,12 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
 import android.widget.RadioGroup;
 
 import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.ui.base.BaseActivity;
 import com.hebth.mobilelibrary.ui.main.fragments.ebook.view.EbookFragment;
-import com.hebth.mobilelibrary.ui.main.fragments.home.HomeFragment;
+import com.hebth.mobilelibrary.ui.main.fragments.home.view.HomeFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.library.LibraryFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.mine.MineFragment;
 
@@ -34,8 +33,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void initView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toobar_main);
-        setSupportActionBar(toolbar);
 
         android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.container_main, mShowFragment, HomeFragment.TAG);

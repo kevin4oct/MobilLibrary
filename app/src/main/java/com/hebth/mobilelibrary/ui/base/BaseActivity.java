@@ -21,8 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         beforeSetContentView();
 
-        Log.e(TAG, "onCreate: " + getLayoutRes());
-
         setContentView(getLayoutRes());
 
         initView();

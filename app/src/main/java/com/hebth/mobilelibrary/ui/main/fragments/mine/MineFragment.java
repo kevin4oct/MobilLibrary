@@ -20,4 +20,9 @@ public class MineFragment extends BaseFragment {
     public void initView() {
 
     }
+
+    @Override
+    public void initListener() {
+
+    }
 }

@@ -25,10 +25,14 @@ public abstract class BaseFragment extends Fragment {
 
         initView();
 
+        initListener();
+
         return mView;
     }
 
     public abstract int getLayoutRes();
 
     public abstract void initView();
+
+    public abstract void initListener();
 }
