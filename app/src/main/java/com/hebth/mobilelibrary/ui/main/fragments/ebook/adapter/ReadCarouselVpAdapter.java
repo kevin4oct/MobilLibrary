@@ -16,12 +16,12 @@ import java.util.List;
  * Created by hebth on 2017-06-12.
  */
 
-public class ReadVpAdapter extends PagerAdapter {
+public class ReadCarouselVpAdapter extends PagerAdapter {
 
     private List<ReadCarouselBean.DataBean> mLists;
     private Context context;
 
-    public ReadVpAdapter(Context context, List<ReadCarouselBean.DataBean> mLists) {
+    public ReadCarouselVpAdapter(Context context, List<ReadCarouselBean.DataBean> mLists) {
 
         this.context = context;
 
@@ -29,11 +29,16 @@ public class ReadVpAdapter extends PagerAdapter {
             this.mLists = mLists;
         } else {
             this.mLists = new ArrayList<>();
+            ReadCarouselBean.DataBean bean = new ReadCarouselBean.DataBean();
+            bean.setFileUrl("https://www.baidu.com/img/bd_logo1.png");
+            this.mLists.add(bean);
         }
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+
+        position = position % (mLists != null ? mLists.size() : 1);
         ImageView imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         Picasso.with(context).load(mLists.get(position).getFileUrl()).into(imageView);
@@ -58,7 +63,7 @@ public class ReadVpAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mLists != null ? mLists.size() : 0;
+        return mLists != null ? Integer.MAX_VALUE / 2 : 0;
     }
 
     @Override

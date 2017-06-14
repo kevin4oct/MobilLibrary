@@ -9,30 +9,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.hebth.mobilelibrary.myview.MyScrollview
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.hebth.mobilelibrary.myview.WrapContentHeightViewpager
+                    android:id="@+id/vp_read"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_read"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </com.hebth.mobilelibrary.myview.MyScrollview>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <com.hebth.mobilelibrary.myview.MyScrollview
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.hebth.mobilelibrary.myview.WrapContentHeightViewpager
-                android:id="@+id/vp_read"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_read"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </com.hebth.mobilelibrary.myview.MyScrollview>
 
 </LinearLayout>

@@ -1,9 +1,8 @@
 package com.hebth.mobilelibrary.ui.main.fragments.ebook.view;
 
-import com.hebth.mobilelibrary.beans.ReadCarouselBean;
 import com.hebth.mobilelibrary.ui.base.BaseView;
 import com.hebth.mobilelibrary.ui.main.fragments.ebook.adapter.ReadRvAdapter;
-import com.hebth.mobilelibrary.ui.main.fragments.ebook.adapter.ReadVpAdapter;
+import com.hebth.mobilelibrary.ui.main.fragments.ebook.adapter.ReadCarouselVpAdapter;
 
 /**
  * Created by hebth on 2017-06-09.
@@ -14,7 +13,7 @@ public interface IReadView extends BaseView{
 
     String getPageNum();
 
-    ReadVpAdapter getVpAdapter();
+    ReadCarouselVpAdapter getVpAdapter();
 
     ReadRvAdapter getRvAdapter();
 }

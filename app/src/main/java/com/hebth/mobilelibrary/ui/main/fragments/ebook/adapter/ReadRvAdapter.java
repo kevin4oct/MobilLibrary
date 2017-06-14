@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.base.AppConstant;
 import com.hebth.mobilelibrary.beans.ReadFragmentBean;
-import com.hebth.mobilelibrary.ui.detail.DetailActivity;
+import com.hebth.mobilelibrary.ui.detail.view.DetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

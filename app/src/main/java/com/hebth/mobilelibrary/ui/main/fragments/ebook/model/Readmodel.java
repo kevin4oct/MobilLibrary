@@ -66,7 +66,7 @@ public class Readmodel implements IReadModel {
 
         ReadRequest request = new ReadRequest();
         request.addQueryStringParameter("rankType", "1");
-        request.addQueryStringParameter("pageSize", "15");
+        request.addQueryStringParameter("pageSize", "21");
         request.addQueryStringParameter("pageNum", pageNum);
         request.addQueryStringParameter("pageType", "3");
         request.addQueryStringParameter("keyword", "");
