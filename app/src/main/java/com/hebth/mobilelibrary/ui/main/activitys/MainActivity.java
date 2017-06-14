@@ -1,9 +1,13 @@
 package com.hebth.mobilelibrary.ui.main.activitys;
 
+import android.graphics.Color;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.widget.RadioGroup;
 
 import com.hebth.mobilelibrary.R;
@@ -24,7 +28,13 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @ViewInject(R.id.control_main)
     private RadioGroup mControler;
 
+    private DrawerLayout mDrawerlayout;
+
+    //    private TextView title_tv;
+    private Toolbar mToolBar;
+
     private Fragment mShowFragment = new HomeFragment();
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     public int getLayoutRes() {
@@ -33,6 +43,21 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void initView() {
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawerlayout_main);
+        mToolBar = (Toolbar) findViewById(R.id.toolbar_main);
+        mToolBar.setTitleTextColor(Color.WHITE);
+        mToolBar.setTitle("天海移动图书馆");
+        setSupportActionBar(mToolBar);
+        //设置返回键可用
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//创建返回键，并实现打开/关闭监听
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerlayout, mToolBar, R.string.open, R.string.close) {
+
+        };
+        mDrawerToggle.syncState();
+        mDrawerlayout.setDrawerListener(mDrawerToggle);
+
 
         android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.container_main, mShowFragment, HomeFragment.TAG);
@@ -87,6 +112,16 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
         }
         transaction.commit();
+        if (MineFragment.TAG.equals(fragmentTag)) {
+            mToolBar.setTitle(getResources().getString(R.string.mine));
+        } else if (EbookFragment.TAG.equals(fragmentTag)) {
+            mToolBar.setTitle(getResources().getString(R.string.ebook));
+        } else if (LibraryFragment.TAG.equals(fragmentTag)) {
+            mToolBar.setTitle(getResources().getString(R.string.library));
+        } else {
+            mToolBar.setTitle(getResources().getString(R.string.app_name));
+        }
+
     }
 
 }

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light"
-        app:tabIndicatorColor="#00FF44"
+        app:tabIndicatorColor="@color/title_bg"
         app:tabSelectedTextColor="#000000"
         app:tabTextColor="#6e6e6e" />
 

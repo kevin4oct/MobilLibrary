@@ -7,12 +7,10 @@
     android:orientation="vertical"
     tools:context="com.hebth.mobilelibrary.ui.detail.view.DetailActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_detail"
         android:layout_width="match_parent"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay" />
+        android:layout_height="@android:dimen/app_icon_size" />
 
     <ScrollView
         android:layout_width="match_parent"

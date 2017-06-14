@@ -6,44 +6,62 @@
     android:orientation="vertical"
     tools:context="com.hebth.mobilelibrary.ui.main.activitys.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/container_main"
+
+    <include
+        android:id="@+id/toolbar_main"
+        layout="@layout/common_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10" />
+        android:layout_height="?attr/actionBarSize" />
 
-    <RadioGroup
-        android:id="@+id/control_main"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerlayout_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <RadioButton
-            android:id="@+id/rb_home_control"
-            style="@style/radiobutton_main"
-            android:checked="true"
-            android:drawableTop="@mipmap/ic_launcher_round"
-            android:text="首页" />
+        <include layout="@layout/custom_main" />
 
-        <RadioButton
-            android:id="@+id/rb_ebook_control"
-            style="@style/radiobutton_main"
-            android:drawableTop="@mipmap/ic_launcher_round"
-            android:text="电子资源" />
+        <RelativeLayout
+            android:id="@+id/right_drawer"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/darker_gray"
+            android:gravity="center_horizontal">
 
-        <RadioButton
-            android:id="@+id/rb_library_control"
-            style="@style/radiobutton_main"
-            android:drawableTop="@mipmap/ic_launcher_round"
-            android:text="图书馆指南" />
+            <ImageView
+                android:id="@+id/iv_head_meum"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:src="@mipmap/ic_launcher" />
 
-        <RadioButton
-            android:id="@+id/rb_mine_control"
-            style="@style/radiobutton_main"
-            android:drawableTop="@mipmap/ic_launcher_round"
-            android:text="我的" />
+            <TextView
+                android:id="@+id/tv_username_meum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_head_meum"
+                android:layout_centerHorizontal="true"
+                android:text="张三三"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
 
-    </RadioGroup>
+            <ListView
+                android:id="@+id/lv_meum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv_username_meum"
+                android:entries="@array/menu_main" />
+
+            <TextView
+                android:id="@+id/tv_version_meum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:text="v 1.0.1" />
+        </RelativeLayout>
+
+    </android.support.v4.widget.DrawerLayout>
+
 </LinearLayout>
-
