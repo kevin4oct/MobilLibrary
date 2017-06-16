@@ -31,4 +31,17 @@ public interface IDetailView extends BaseView {
 
     void setTableContent(String tableContent);
 
+    long getFileSize();
+
+    void setFileSize(long fileSize);
+
+    String getFilePath();
+
+    void setFilePath(String filePath);
+
+    String getFileName();
+
+    void setFileName(String fileName);
+
+    void setTaskId(long taskId);
 }

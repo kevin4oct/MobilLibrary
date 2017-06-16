@@ -16,6 +16,7 @@ import com.hebth.mobilelibrary.ui.main.fragments.ebook.view.EbookFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.home.view.HomeFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.library.LibraryFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.mine.MineFragment;
+import com.orhanobut.logger.Logger;
 
 import org.xutils.view.annotation.ViewInject;
 

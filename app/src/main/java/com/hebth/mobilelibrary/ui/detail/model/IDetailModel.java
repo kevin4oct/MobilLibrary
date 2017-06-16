@@ -9,6 +9,12 @@ import com.hebth.mobilelibrary.ui.base.BaseModel;
 
 public interface IDetailModel extends BaseModel {
 
+    //加载数据
     void loadData(String bookId, OnDetailListener listener);
 
+    //下载文件
+    void downLoadFile(String downloadUrl, String fileName, OnDownLoadListener listener);
+
+    //获取阅读进度
+    void getRecord(String cardNum, String bookId,OnRecordListener listener);
 }

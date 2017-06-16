@@ -7,8 +7,9 @@
     android:orientation="vertical"
     tools:context="com.hebth.mobilelibrary.ui.detail.view.DetailActivity">
 
-    <android.support.v7.widget.Toolbar
+    <include
         android:id="@+id/toolbar_detail"
+        layout="@layout/common_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/app_icon_size" />
 
@@ -46,20 +47,20 @@
                         android:id="@+id/tv_bookname_bookdetail"
                         style="@style/tv_up_bookdetail"
                         android:layout_weight="1"
-                        android:text="朱世忠文存.上卷"
+                        android:text="@string/loding"
                         android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tv_bookauthor_bookdetail"
                         style="@style/tv_up_bookdetail"
                         android:layout_weight="1"
-                        android:text="作者：朱世忠" />
+                        android:text="@string/loding" />
 
                     <TextView
                         android:id="@+id/tv_press_bookdetail"
                         style="@style/tv_up_bookdetail"
                         android:layout_weight="1"
-                        android:text="出版社：宁夏人民出版社" />
+                        android:text="@string/loding" />
 
                     <!--<TextView-->
                     <!--android:id="@+id/tv_publishdate_bookdetail"-->
@@ -71,7 +72,7 @@
                         android:id="@+id/tv_isbn_bookdetail"
                         style="@style/tv_up_bookdetail"
                         android:layout_weight="1"
-                        android:text="ISBN：978-7-227-04562-5（1）" />
+                        android:text="@string/loding" />
 
                     <!--<TextView-->
                     <!--android:id="@+id/tv_bookprice_bookdetail"-->
@@ -83,7 +84,7 @@
                         android:id="@+id/tv_fileext_bookdetail"
                         style="@style/tv_up_bookdetail"
                         android:layout_weight="1"
-                        android:text="文件格式：EPUB" />
+                        android:text="@string/loding" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -103,12 +104,12 @@
                     android:text="阅读" />
 
                 <Button
-                android:id="@+id/btn_collection_bookdetail"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:text="收藏" />
+                    android:id="@+id/btn_collection_bookdetail"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:text="收藏" />
 
             </LinearLayout>
 
@@ -134,6 +135,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -147,7 +150,7 @@
                     android:id="@+id/tv_description_bookdetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="这两年学乖了，怕惹麻烦..." />
+                    android:text="@string/loding" />
             </LinearLayout>
 
             <LinearLayout
@@ -161,6 +164,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -173,7 +178,7 @@
                     android:id="@+id/tv_tablecontent_bookdetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="昨夜西风凋碧树（代序）" />
+                    android:text="@string/loding" />
 
             </LinearLayout>
 

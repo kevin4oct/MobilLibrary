@@ -1,6 +1,7 @@
 package com.hebth.mobilelibrary.ui.detail.net;
 
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import org.xutils.http.app.ResponseParser;
 import org.xutils.http.request.UriRequest;

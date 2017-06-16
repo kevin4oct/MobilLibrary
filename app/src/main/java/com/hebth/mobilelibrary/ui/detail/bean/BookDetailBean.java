@@ -14,7 +14,7 @@ import java.util.List;
 public class BookDetailBean {
 
     /**
-     * data1 : {"id":"de5135cc1e7911e7bd1f00163e160aa8","bookTarget":{"id":null,"bookId":"de5135cc1e7911e7bd1f00163e160aa8","electronic":null,"rightStartDate":null,"rightEndDate":null,"rightFromId":null,"rightFromName":null,"count":null,"reponsibilityEdition":null,"charNumber":null,"cano":null,"ano":null,"other1":null,"other2":null,"other3":null,"other4":null,"other5":null,"buyerId":null,"buyerName":null,"buyDate":null,"createUserId":null,"createUserName":null,"createDate":null,"checkerId":null,"checkerName":null,"checkFlag":null,"checkNotes":null,"flagEnd":null,"fileSize":null,"modifyUserId":null,"modifyUserName":null,"modifyDate":null},"libraryOrganization":null,"bookName":"朝花夕拾","bookAuthor":"鲁迅","press":"万卷出版公司","publishDate":1446307200000,"publishDatestr":null,"bookPrice":19.8,"aboutAuthor":null,"isbn":"978-7-5470-2369-3","classificationNumber":"I210.4","subjectTerm":null,"bookLanguage":null,"bookEdition":null,"translationAnnotation":null,"bookSubtitle":null,"subjectClassificationNumbers":null,"winningNumberClassification":null,"description":"社会主义核心价值体系，是中国精神的旗帜，是中华民族传统美德和时代精神的完美结合。广大青少年如何努力塑造自己，成为有理想、有道德、有文化、有纪律的德智体美全面发展的社会主义合格建设者和接班人，需要自觉地学习体会践行社会主义核心价值体系的要求，夯实思想基础，坚定走中国特色社会主义的信念，为实现中华民族伟大复兴贡献力量。","bindingLayout":null,"uploadDate":null,"status":1,"bookType":null,"organId":null,"country":null,"area":null,"physicalAttr":null,"bookNamePY":null,"generalDataId":null,"anotherAuthor":null,"parallelTitle":null,"translator":null,"volumesName":null,"volumesNo":null,"editionState":null,"city":null,"pages":null,"chart":null,"size":null,"attachment":null,"seriesName":null,"seriesNamePy":null,"seriesAuthor":null,"generalNotes":null,"publicationNotes":null,"responsibilityNotes":null,"userNotes":null,"parallelTitleProper":null,"pTPLanguage":null,"personalSubject":null,"corporateSubject":null,"titleSubject":null,"topicalSubject":null,"geographicalSubject":null,"uncontrolledSubject":null,"lccas":null,"air":null,"airPy":null,"sir":null,"sirPy":null,"pir":null,"originatingSource":null,"deleteFlag":null,"shelveDate":null,"bookStarLevel":"1","bookFiles":[{"id":null,"bookId":null,"origName":"978-7-5470-2369-3_de5135cc1e7911e7bd1f00163e160aa8.epub","fileSize":798342,"filePath":"group1/M00/03/4F/Zcl0lljsinaADf6KAAwuhhEeLlI56.epub","fileExt":"epub","tableContent":"封面\n版权信息\n序言\n朝花夕拾\n《朝花夕拾》小引\n狗 猫 鼠\n阿长与《山海经》\n二十四孝图\n五猖会\n无常\n从百草园到三味书屋\n父亲的病\n琐记\n藤野先生\n范爱农\n后记\n投枪匕首\n记念刘和珍君\n中国人失掉自信力了吗\n拿来主义\n随感录三十八\n娜拉走后怎样\u2014一九二三年十二月二十六日在北京女子高等师范学校文艺会讲\n再论雷峰塔的倒掉\n我之节烈观\n灯下漫笔\n青年必读书\u2014应《京报副刊》的征求\n战士和苍蝇\n论\u201c他妈的！\u201d\n论睁了眼看\n夏三虫\n略论中国人的脸\n读书杂谈\u2014七月十六日在广州知用中学讲\n谈皇帝","attachType":1,"isMark":null,"isUsing":null}],"bookPictures":[{"id":null,"bookId":null,"origName":"978-7-5470-2369-3_de5135cc1e7911e7bd1f00163e160aa8.jpg","fileSize":46710,"filePath":"group1/M00/03/4F/Zcl0d1jsinyAfX0EAAAsOo8QqRg636.jpg","fileExt":"jpg","tableContent":null,"attachType":2,"isMark":null,"isUsing":null}],"specialColumnId":null}
+     * data1 : {"id":"de5102c61e7911e7bd1f00163e160aa8","bookTarget":{"id":null,"bookId":"de5102c61e7911e7bd1f00163e160aa8","electronic":null,"rightStartDate":null,"rightEndDate":null,"rightFromId":null,"rightFromName":null,"count":null,"reponsibilityEdition":null,"charNumber":null,"cano":null,"ano":null,"other1":null,"other2":null,"other3":null,"other4":null,"other5":null,"buyerId":null,"buyerName":null,"buyDate":null,"createUserId":null,"createUserName":null,"createDate":null,"checkerId":null,"checkerName":null,"checkFlag":null,"checkNotes":null,"flagEnd":null,"fileSize":null,"modifyUserId":null,"modifyUserName":null,"modifyDate":null},"libraryOrganization":null,"bookName":"荷塘月色","bookAuthor":"朱自清","press":"万卷出版公司","publishDate":1343750400000,"publishDatestr":null,"bookPrice":19.8,"aboutAuthor":null,"isbn":"978-7-5470-2368-6","classificationNumber":"I266","subjectTerm":null,"bookLanguage":null,"bookEdition":null,"translationAnnotation":null,"bookSubtitle":null,"subjectClassificationNumbers":null,"winningNumberClassification":null,"description":"本书是一本电话销售方法的原创读本。《电话销售28堂实战训练课》凝聚着一位成功销售人士的推销心经。《电话销售28堂实战训练课》通过原因分析、解决方法、故事导入的三种形式把电话推销方法融入其中，内容简洁、通俗、易懂。","bindingLayout":null,"uploadDate":null,"status":1,"bookType":null,"organId":null,"country":null,"area":null,"physicalAttr":null,"bookNamePY":null,"generalDataId":null,"anotherAuthor":null,"parallelTitle":null,"translator":null,"volumesName":null,"volumesNo":null,"editionState":null,"city":null,"pages":null,"chart":null,"size":null,"attachment":null,"seriesName":null,"seriesNamePy":null,"seriesAuthor":null,"generalNotes":null,"publicationNotes":null,"responsibilityNotes":null,"userNotes":null,"parallelTitleProper":null,"pTPLanguage":null,"personalSubject":null,"corporateSubject":null,"titleSubject":null,"topicalSubject":null,"geographicalSubject":null,"uncontrolledSubject":null,"lccas":null,"air":null,"airPy":null,"sir":null,"sirPy":null,"pir":null,"originatingSource":null,"deleteFlag":null,"shelveDate":null,"bookStarLevel":"1","bookFiles":[{"id":null,"bookId":null,"origName":"978-7-5470-2368-6_de5102c61e7911e7bd1f00163e160aa8.epub","fileSize":206947,"filePath":"group1/M00/03/4F/Zcl0lljsinaAKUE1AAMoY1ys97Q53.epub","fileExt":"epub","tableContent":"封面\n版权信息\n序言\n感悟\n《忆》跋\n荷塘月色\n春\n买书\n故人\n我是扬州人\n教育家的夏丏尊先生\n阿河\n给亡妇\n我所见的叶圣陶\n踪迹\n温州的踪迹\n旅行杂记\n重庆行记\n蒙自杂记\n思索\n航船中的文明\n白种人\u2014\u2014上帝的骄子\n沉默\n论诚意\n论废话\n论气节\n伦敦杂记\n三家书店\n文人宅\n博物院\n公园\n加尔东尼市场\n吃的\n乞丐\n圣诞节\n房东太太","attachType":1,"isMark":null,"isUsing":null}],"bookPictures":[{"id":null,"bookId":null,"origName":"978-7-5470-2368-6_de5102c61e7911e7bd1f00163e160aa8.jpg","fileSize":53182,"filePath":"group1/M00/03/4F/Zcl0d1jsinuAdeoHAAAqjrPNNrI876.jpg","fileExt":"jpg","tableContent":null,"attachType":2,"isMark":null,"isUsing":null}],"specialColumnId":null}
      */
 
     private Data1Bean data1;
@@ -29,18 +29,18 @@ public class BookDetailBean {
 
     public static class Data1Bean {
         /**
-         * id : de5135cc1e7911e7bd1f00163e160aa8
-         * bookTarget : {"id":null,"bookId":"de5135cc1e7911e7bd1f00163e160aa8","electronic":null,"rightStartDate":null,"rightEndDate":null,"rightFromId":null,"rightFromName":null,"count":null,"reponsibilityEdition":null,"charNumber":null,"cano":null,"ano":null,"other1":null,"other2":null,"other3":null,"other4":null,"other5":null,"buyerId":null,"buyerName":null,"buyDate":null,"createUserId":null,"createUserName":null,"createDate":null,"checkerId":null,"checkerName":null,"checkFlag":null,"checkNotes":null,"flagEnd":null,"fileSize":null,"modifyUserId":null,"modifyUserName":null,"modifyDate":null}
+         * id : de5102c61e7911e7bd1f00163e160aa8
+         * bookTarget : {"id":null,"bookId":"de5102c61e7911e7bd1f00163e160aa8","electronic":null,"rightStartDate":null,"rightEndDate":null,"rightFromId":null,"rightFromName":null,"count":null,"reponsibilityEdition":null,"charNumber":null,"cano":null,"ano":null,"other1":null,"other2":null,"other3":null,"other4":null,"other5":null,"buyerId":null,"buyerName":null,"buyDate":null,"createUserId":null,"createUserName":null,"createDate":null,"checkerId":null,"checkerName":null,"checkFlag":null,"checkNotes":null,"flagEnd":null,"fileSize":null,"modifyUserId":null,"modifyUserName":null,"modifyDate":null}
          * libraryOrganization : null
-         * bookName : 朝花夕拾
-         * bookAuthor : 鲁迅
+         * bookName : 荷塘月色
+         * bookAuthor : 朱自清
          * press : 万卷出版公司
-         * publishDate : 1446307200000
+         * publishDate : 1343750400000
          * publishDatestr : null
          * bookPrice : 19.8
          * aboutAuthor : null
-         * isbn : 978-7-5470-2369-3
-         * classificationNumber : I210.4
+         * isbn : 978-7-5470-2368-6
+         * classificationNumber : I266
          * subjectTerm : null
          * bookLanguage : null
          * bookEdition : null
@@ -48,7 +48,7 @@ public class BookDetailBean {
          * bookSubtitle : null
          * subjectClassificationNumbers : null
          * winningNumberClassification : null
-         * description : 社会主义核心价值体系，是中国精神的旗帜，是中华民族传统美德和时代精神的完美结合。广大青少年如何努力塑造自己，成为有理想、有道德、有文化、有纪律的德智体美全面发展的社会主义合格建设者和接班人，需要自觉地学习体会践行社会主义核心价值体系的要求，夯实思想基础，坚定走中国特色社会主义的信念，为实现中华民族伟大复兴贡献力量。
+         * description : 本书是一本电话销售方法的原创读本。《电话销售28堂实战训练课》凝聚着一位成功销售人士的推销心经。《电话销售28堂实战训练课》通过原因分析、解决方法、故事导入的三种形式把电话推销方法融入其中，内容简洁、通俗、易懂。
          * bindingLayout : null
          * uploadDate : null
          * status : 1
@@ -95,8 +95,8 @@ public class BookDetailBean {
          * deleteFlag : null
          * shelveDate : null
          * bookStarLevel : 1
-         * bookFiles : [{"id":null,"bookId":null,"origName":"978-7-5470-2369-3_de5135cc1e7911e7bd1f00163e160aa8.epub","fileSize":798342,"filePath":"group1/M00/03/4F/Zcl0lljsinaADf6KAAwuhhEeLlI56.epub","fileExt":"epub","tableContent":"封面\n版权信息\n序言\n朝花夕拾\n《朝花夕拾》小引\n狗 猫 鼠\n阿长与《山海经》\n二十四孝图\n五猖会\n无常\n从百草园到三味书屋\n父亲的病\n琐记\n藤野先生\n范爱农\n后记\n投枪匕首\n记念刘和珍君\n中国人失掉自信力了吗\n拿来主义\n随感录三十八\n娜拉走后怎样\u2014一九二三年十二月二十六日在北京女子高等师范学校文艺会讲\n再论雷峰塔的倒掉\n我之节烈观\n灯下漫笔\n青年必读书\u2014应《京报副刊》的征求\n战士和苍蝇\n论\u201c他妈的！\u201d\n论睁了眼看\n夏三虫\n略论中国人的脸\n读书杂谈\u2014七月十六日在广州知用中学讲\n谈皇帝","attachType":1,"isMark":null,"isUsing":null}]
-         * bookPictures : [{"id":null,"bookId":null,"origName":"978-7-5470-2369-3_de5135cc1e7911e7bd1f00163e160aa8.jpg","fileSize":46710,"filePath":"group1/M00/03/4F/Zcl0d1jsinyAfX0EAAAsOo8QqRg636.jpg","fileExt":"jpg","tableContent":null,"attachType":2,"isMark":null,"isUsing":null}]
+         * bookFiles : [{"id":null,"bookId":null,"origName":"978-7-5470-2368-6_de5102c61e7911e7bd1f00163e160aa8.epub","fileSize":206947,"filePath":"group1/M00/03/4F/Zcl0lljsinaAKUE1AAMoY1ys97Q53.epub","fileExt":"epub","tableContent":"封面\n版权信息\n序言\n感悟\n《忆》跋\n荷塘月色\n春\n买书\n故人\n我是扬州人\n教育家的夏丏尊先生\n阿河\n给亡妇\n我所见的叶圣陶\n踪迹\n温州的踪迹\n旅行杂记\n重庆行记\n蒙自杂记\n思索\n航船中的文明\n白种人\u2014\u2014上帝的骄子\n沉默\n论诚意\n论废话\n论气节\n伦敦杂记\n三家书店\n文人宅\n博物院\n公园\n加尔东尼市场\n吃的\n乞丐\n圣诞节\n房东太太","attachType":1,"isMark":null,"isUsing":null}]
+         * bookPictures : [{"id":null,"bookId":null,"origName":"978-7-5470-2368-6_de5102c61e7911e7bd1f00163e160aa8.jpg","fileSize":53182,"filePath":"group1/M00/03/4F/Zcl0d1jsinuAdeoHAAAqjrPNNrI876.jpg","fileExt":"jpg","tableContent":null,"attachType":2,"isMark":null,"isUsing":null}]
          * specialColumnId : null
          */
 
@@ -725,7 +725,7 @@ public class BookDetailBean {
         public static class BookTargetBean {
             /**
              * id : null
-             * bookId : de5135cc1e7911e7bd1f00163e160aa8
+             * bookId : de5102c61e7911e7bd1f00163e160aa8
              * electronic : null
              * rightStartDate : null
              * rightEndDate : null
@@ -1052,43 +1052,46 @@ public class BookDetailBean {
             /**
              * id : null
              * bookId : null
-             * origName : 978-7-5470-2369-3_de5135cc1e7911e7bd1f00163e160aa8.epub
-             * fileSize : 798342
-             * filePath : group1/M00/03/4F/Zcl0lljsinaADf6KAAwuhhEeLlI56.epub
+             * origName : 978-7-5470-2368-6_de5102c61e7911e7bd1f00163e160aa8.epub
+             * fileSize : 206947
+             * filePath : group1/M00/03/4F/Zcl0lljsinaAKUE1AAMoY1ys97Q53.epub
              * fileExt : epub
              * tableContent : 封面
-             * 版权信息
-             * 序言
-             * 朝花夕拾
-             * 《朝花夕拾》小引
-             * 狗 猫 鼠
-             * 阿长与《山海经》
-             * 二十四孝图
-             * 五猖会
-             * 无常
-             * 从百草园到三味书屋
-             * 父亲的病
-             * 琐记
-             * 藤野先生
-             * 范爱农
-             * 后记
-             * 投枪匕首
-             * 记念刘和珍君
-             * 中国人失掉自信力了吗
-             * 拿来主义
-             * 随感录三十八
-             * 娜拉走后怎样—一九二三年十二月二十六日在北京女子高等师范学校文艺会讲
-             * 再论雷峰塔的倒掉
-             * 我之节烈观
-             * 灯下漫笔
-             * 青年必读书—应《京报副刊》的征求
-             * 战士和苍蝇
-             * 论“他妈的！”
-             * 论睁了眼看
-             * 夏三虫
-             * 略论中国人的脸
-             * 读书杂谈—七月十六日在广州知用中学讲
-             * 谈皇帝
+             版权信息
+             序言
+             感悟
+             《忆》跋
+             荷塘月色
+             春
+             买书
+             故人
+             我是扬州人
+             教育家的夏丏尊先生
+             阿河
+             给亡妇
+             我所见的叶圣陶
+             踪迹
+             温州的踪迹
+             旅行杂记
+             重庆行记
+             蒙自杂记
+             思索
+             航船中的文明
+             白种人——上帝的骄子
+             沉默
+             论诚意
+             论废话
+             论气节
+             伦敦杂记
+             三家书店
+             文人宅
+             博物院
+             公园
+             加尔东尼市场
+             吃的
+             乞丐
+             圣诞节
+             房东太太
              * attachType : 1
              * isMark : null
              * isUsing : null
@@ -1190,9 +1193,9 @@ public class BookDetailBean {
             /**
              * id : null
              * bookId : null
-             * origName : 978-7-5470-2369-3_de5135cc1e7911e7bd1f00163e160aa8.jpg
-             * fileSize : 46710
-             * filePath : group1/M00/03/4F/Zcl0d1jsinyAfX0EAAAsOo8QqRg636.jpg
+             * origName : 978-7-5470-2368-6_de5102c61e7911e7bd1f00163e160aa8.jpg
+             * fileSize : 53182
+             * filePath : group1/M00/03/4F/Zcl0d1jsinuAdeoHAAAqjrPNNrI876.jpg
              * fileExt : jpg
              * tableContent : null
              * attachType : 2
