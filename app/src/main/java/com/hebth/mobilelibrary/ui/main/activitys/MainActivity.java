@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.widget.RadioGroup;
 
 import com.hebth.mobilelibrary.R;
@@ -16,7 +17,7 @@ import com.hebth.mobilelibrary.ui.main.fragments.ebook.view.EbookFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.home.view.HomeFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.library.LibraryFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.mine.MineFragment;
-import com.orhanobut.logger.Logger;
+import com.hebth.mobilelibrary.utils.ToastUtils;
 
 import org.xutils.view.annotation.ViewInject;
 
@@ -52,7 +53,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         //设置返回键可用
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//创建返回键，并实现打开/关闭监听
+        //创建返回键，并实现打开/关闭监听
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerlayout, mToolBar, R.string.open, R.string.close) {
 
         };
@@ -125,4 +126,23 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     }
 
+    /**
+     * 再按一次退出
+     */
+    private long exitTime = 0;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                ToastUtils.showText(this, "再按一次退出程序");
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

@@ -8,38 +8,48 @@
         android:id="@+id/container_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10" />
+        android:layout_weight="11" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"/>
 
     <RadioGroup
         android:id="@+id/control_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="#F9F9F9"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rb_home_control"
             style="@style/radiobutton_main"
             android:checked="true"
-            android:drawableTop="@mipmap/ic_launcher_round"
-            android:text="@string/home" />
+            android:drawableTop="@drawable/selector_main_home"
+            android:text="@string/home"
+            android:textColor="@drawable/selector_main_text" />
 
         <RadioButton
             android:id="@+id/rb_ebook_control"
             style="@style/radiobutton_main"
-            android:drawableTop="@mipmap/ic_launcher_round"
+            android:drawableTop="@drawable/selector_main_read"
+            android:textColor="@drawable/selector_main_text"
             android:text="@string/ebook" />
 
         <RadioButton
             android:id="@+id/rb_library_control"
             style="@style/radiobutton_main"
-            android:drawableTop="@mipmap/ic_launcher_round"
+            android:drawableTop="@drawable/selector_main_library"
+            android:textColor="@drawable/selector_main_text"
             android:text="@string/library" />
 
         <RadioButton
             android:id="@+id/rb_mine_control"
             style="@style/radiobutton_main"
-            android:drawableTop="@mipmap/ic_launcher_round"
+            android:drawableTop="@drawable/selector_main_mine"
+            android:textColor="@drawable/selector_main_text"
             android:text="@string/mine" />
     </RadioGroup>
 </LinearLayout>

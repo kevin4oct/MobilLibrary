@@ -13,15 +13,16 @@
         android:layout_height="match_parent"
         android:layout_weight="7"
         android:layout_marginStart="15dp"
-        android:text="水色群青——李群水彩作品展” 在河北"
-        android:textStyle="bold" />
+        android:marqueeRepeatLimit="marquee_forever"
+        android:ellipsize="marquee"
+        android:textStyle="bold"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/tv_time_news"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:gravity="center"
-        android:text="2017.05.02" />
+        android:gravity="center"/>
 
 </LinearLayout>

@@ -1,11 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <ImageView
+        android:id="@+id/bg_mine"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="minefragmnet" />
-</LinearLayout>
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bg_mine"
+        app:layout_heightPercent="30%" />
+
+    <ImageView
+        android:id="@+id/iv_photo_mine"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:scaleType="fitStart"
+        android:src="@mipmap/ic_launcher"
+        app:layout_heightPercent="12%"
+        app:layout_marginTopPercent="25%"
+        app:layout_widthPercent="16%" />
+
+    <TextView
+        android:id="@+id/tv_username_mine"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/bg_mine"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/iv_photo_mine"
+        android:gravity="center_vertical"
+        android:text="尼古拉斯赵四"
+        android:textColor="@android:color/black"
+        app:layout_heightPercent="6%" />
+
+
+    <!--个人信息-->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/rl_persion_mine"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/iv_photo_mine"
+        android:background="@android:color/white"
+        app:layout_heightPercent="8%"
+        app:layout_marginTopPercent="2%">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
+
+        <ImageView
+            android:id="@+id/icon_persion_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_persioninfo_mine"
+            app:layout_heightPercent="50%"
+            app:layout_marginLeftPercent="6%" />
+
+        <TextView
+            android:id="@+id/tv_persion_mine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/icon_persion_mine"
+            android:gravity="center_vertical"
+            android:text="个人信息"
+            android:textSize="16sp"
+            app:layout_marginStartPercent="4%" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_item"
+            app:layout_heightPercent="30%"
+            app:layout_marginRightPercent="6%" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/darker_gray" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <!--借阅信息-->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/rl_borrowing_mine"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/rl_persion_mine"
+        android:background="@android:color/white"
+        app:layout_heightPercent="8%"
+        app:layout_marginTopPercent="3%">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
+
+        <ImageView
+            android:id="@+id/icon_borrowing_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_borrowing_mine"
+            app:layout_heightPercent="50%"
+            app:layout_marginLeftPercent="6%" />
+
+        <TextView
+            android:id="@+id/tv_borrowing_mine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/icon_borrowing_mine"
+            android:gravity="center_vertical"
+            android:text="借阅信息"
+            android:textSize="16sp"
+            app:layout_marginStartPercent="4%" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_item"
+            app:layout_heightPercent="30%"
+            app:layout_marginRightPercent="6%" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/darker_gray" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <!--程序设置-->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/rl_setting_mine"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/rl_borrowing_mine"
+        android:background="@android:color/white"
+        app:layout_heightPercent="8%"
+        app:layout_marginTopPercent="3%">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
+
+        <ImageView
+            android:id="@+id/icon_setting_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_setting_mine"
+            app:layout_heightPercent="50%"
+            app:layout_marginLeftPercent="6%" />
+
+        <TextView
+            android:id="@+id/tv_setting_mine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/icon_setting_mine"
+            android:gravity="center_vertical"
+            android:text="程序设置"
+            android:textSize="16sp"
+            app:layout_marginStartPercent="4%" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_item"
+            app:layout_heightPercent="30%"
+            app:layout_marginRightPercent="6%" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/darker_gray" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <!--关于我们-->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/rl_about_mine"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/rl_setting_mine"
+        android:background="@android:color/white"
+        app:layout_heightPercent="8%"
+        app:layout_marginTopPercent="3%">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
+
+        <ImageView
+            android:id="@+id/icon_about_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_borrowing_mine"
+            app:layout_heightPercent="50%"
+            app:layout_marginLeftPercent="6%" />
+
+        <TextView
+            android:id="@+id/tv_about_mine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/icon_about_mine"
+            android:gravity="center_vertical"
+            android:text="关于我们"
+            android:textSize="16sp"
+            app:layout_marginStartPercent="4%" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_item"
+            app:layout_heightPercent="30%"
+            app:layout_marginRightPercent="6%" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/darker_gray" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

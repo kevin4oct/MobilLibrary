@@ -23,9 +23,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         setContentView(getLayoutRes());
 
-        initView();
-
         x.view().inject(this);
+
+        initView();
 
         initListener();
     }

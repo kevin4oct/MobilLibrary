@@ -1,124 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<android.support.design.widget.TabLayout-->
-    <!--android:id="@+id/tablayout_ebook"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:background="@android:color/holo_blue_light"-->
-    <!--app:tabIndicatorColor="#00FF44"-->
-    <!--app:tabSelectedTextColor="#000000"-->
-    <!--app:tabTextColor="#6e6e6e" />-->
-
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_carousel_home"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vp_height_home" />
+        android:layout_height="0dp"
+        app:layout_heightPercent="30%" />
 
+    <!--按钮功能区-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="@dimen/margin_startandend_home"
-        android:layout_marginStart="@dimen/margin_startandend_home"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_heightPercent="26%"
         android:orientation="vertical">
 
+        <!--第一行按钮-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:orientation="vertical">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            <!--馆藏查询-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/btn_search_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
-                <include
-                    android:id="@+id/btn_opac_home"
-                    layout="@layout/common_funtion_btn"
+                <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_search_home"
+                    app:layout_heightPercent="60%"
+                    app:layout_widthPercent="40%" />
 
-                <include
-                    android:id="@+id/btn_recommend_home"
-                    layout="@layout/common_funtion_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="馆藏查询"
+                    android:textSize="12sp" />
 
-                <include
-                    android:id="@+id/btn_borrowlist_home"
-                    layout="@layout/common_funtion_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+            </com.zhy.android.percent.support.PercentLinearLayout>
 
-                <include
-                    android:id="@+id/btn_rq_home"
-                    layout="@layout/common_funtion_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            <!--新书推荐-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/btn_recommend_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
-                <include
-                    android:id="@+id/btn_readerinfo_home"
-                    layout="@layout/common_funtion_btn"
+                <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_recommend_home"
+                    app:layout_heightPercent="60%"
+                    app:layout_widthPercent="40%" />
 
-                <include
-                    android:id="@+id/btn_shelf_home"
-                    layout="@layout/common_funtion_btn"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="新书推荐"
+                    android:textSize="12sp" />
+
+            </com.zhy.android.percent.support.PercentLinearLayout>
+
+            <!--借阅排行-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/btn_borrowlist_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_borrowlist_home"
+                    app:layout_heightPercent="60%"
+                    app:layout_widthPercent="40%" />
 
-                <include
-                    android:id="@+id/btn_borrowing_home"
-                    layout="@layout/common_funtion_btn"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="借阅排行"
+                    android:textSize="12sp" />
+
+            </com.zhy.android.percent.support.PercentLinearLayout>
+
+            <!--扫一扫-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/btn_rq_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_rq_home"
+                    app:layout_heightPercent="60%"
+                    app:layout_widthPercent="40%" />
 
-                <include
-                    android:id="@+id/btn_history_home"
-                    layout="@layout/common_funtion_btn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="扫一扫"
+                    android:textSize="12sp" />
 
-
-            </LinearLayout>
-
+            </com.zhy.android.percent.support.PercentLinearLayout>
         </LinearLayout>
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_vp_home"
+        <!--第二行按钮-->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_home"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5" />
+            <!--读者信息-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/btn_readerinfo_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_readerinfo_home"
+                    app:layout_heightPercent="60%"
+                    app:layout_widthPercent="40%" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="读者信息"
+                    android:textSize="12sp" />
+
+            </com.zhy.android.percent.support.PercentLinearLayout>
+
+            <!--我的书架-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/btn_shelf_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_shelf_home"
+                    app:layout_heightPercent="60%"
+                    app:layout_widthPercent="40%" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="我的书架"
+                    android:textSize="12sp" />
+
+            </com.zhy.android.percent.support.PercentLinearLayout>
+
+            <!--正在借阅-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/btn_borrowing_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_borrowing_home"
+                    app:layout_heightPercent="60%"
+                    app:layout_widthPercent="40%" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="正在借阅"
+                    android:textSize="12sp" />
+
+            </com.zhy.android.percent.support.PercentLinearLayout>
+
+            <!--历史借阅-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/btn_history_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/btn_history_home"
+                    app:layout_heightPercent="60%"
+                    app:layout_widthPercent="40%" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="历史借阅"
+                    android:textSize="12sp" />
+
+            </com.zhy.android.percent.support.PercentLinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+    <!--导航条-->
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_vp_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="7%"
+        android:layout_marginTop="5dp"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabTextColor="#AAAAAA" />
+
+    <!--新闻viewpager-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7" />
+
+</com.zhy.android.percent.support.PercentLinearLayout>

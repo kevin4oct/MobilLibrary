@@ -31,8 +31,7 @@ public class EbookFragment extends BaseFragment {
         mTabLayout = (TabLayout) mView.findViewById(R.id.tablayout_ebook);
         ArrayList<Fragment> mList = new ArrayList<>();
         mList.add(new ReadFragment());
-        mList.add(new ClassFragment());
-        mList.add(new DissertationFragment());
+        mList.add(new ShelfFragment());
         EbookVpAdapter adapter = new EbookVpAdapter(getFragmentManager(), mList);
         vp_container.setAdapter(adapter);
         mTabLayout.setupWithViewPager(vp_container);

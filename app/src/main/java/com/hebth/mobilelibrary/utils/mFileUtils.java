@@ -26,7 +26,7 @@ public class mFileUtils {
     /**
      * 文件在SD卡中存储的根路径
      */
-//    public static final String SDCARDPATH = Environment.getExternalStorageDirectory().getPath();
+//    public static final String EBOOK_PATH = Environment.getExternalStorageDirectory().getPath();
     public static final String SDCARDPATH = MyApplication.getContext()
             .getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS + File.separator + "ebooks")
             .getAbsolutePath();

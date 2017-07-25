@@ -41,9 +41,7 @@ public class EbookVpAdapter extends FragmentPagerAdapter {
             case 0:
                 return "阅读";
             case 1:
-                return "分类";
-            case 2:
-                return "专题";
+                return "书架";
         }
         return null;
     }

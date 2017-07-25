@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.base.AppConstant;
 import com.hebth.mobilelibrary.beans.ReadFragmentBean;
-import com.hebth.mobilelibrary.ui.detail.view.DetailActivity;
+import com.hebth.mobilelibrary.ui.ebookdetail.view.EBookDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -98,7 +98,7 @@ public class ReadRvAdapter extends RecyclerView.Adapter<ReadRvAdapter.ViewHolder
     public void onClick(View v) {
         int position = mRecycler.getChildAdapterPosition(v);
         Log.e(TAG, "onClick: "+position );
-        context.startActivity(DetailActivity.getDetailActivity(context,mList.get(position).getId()));
+        context.startActivity(EBookDetailActivity.getDetailActivity(context,mList.get(position).getId()));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

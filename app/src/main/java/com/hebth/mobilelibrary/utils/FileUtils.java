@@ -2,10 +2,10 @@ package com.hebth.mobilelibrary.utils;
 
 import android.os.Environment;
 import android.os.StatFs;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.hebth.mobilelibrary.MyApplication;
-import com.orhanobut.logger.Logger;
 
 import java.io.File;
 
@@ -17,16 +17,29 @@ import java.io.File;
 public class FileUtils {
     public static final String TAG = FileUtils.class.getSimpleName();
 
+    public static final int COVER = 0x100;
+    public static final int EBOOK = 0x200;
+
     /**
      * 文件在SD卡中存储的根路径
      */
     public static final File EBOOKFILE = MyApplication.getContext()
             .getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS + File.separator + "ebooks");
+    /**
+     * 电子书封面在SD卡中存储的根路径
+     */
+    public static final File EBOOKCOVERFILE = MyApplication.getContext()
+            .getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS + File.separator + "cover");
 
     /**
      * 文件在SD卡中存储的根路径
      */
-    public static final String SDCARDPATH = EBOOKFILE.getAbsolutePath();
+    public static final String EBOOK_PATH = EBOOKFILE.getAbsolutePath();
+
+    /**
+     * 文件在SD卡中存储的根路径
+     */
+    public static final String COVER_PATH = EBOOKCOVERFILE.getAbsolutePath();
 
     /**
      * SD卡的状态
@@ -49,13 +62,10 @@ public class FileUtils {
     /**
      * 获取sd卡目录下是否包含该文件
      */
-    public static boolean getFiles(String fileName) {
-
-        Logger.e(TAG, "要查询的书名 " + fileName);
-        String[] list = EBOOKFILE.list();
-        for (String s : list) {
+    public static boolean isInclude(int type,String fileName) {
+        for (String s : getFiles(type)) {
             if (fileName.equals(s)) {
-                Log.e(TAG, "要查询的书名: " + fileName + ",找到该书：" + s);
+                Log.e(TAG, "要查询的文件名: " + fileName + ",找到该书：" + s);
                 return true;
             }
         }
@@ -63,5 +73,20 @@ public class FileUtils {
         return false;
     }
 
+    /**
+     * 获取存储目录下的文件列表
+     *
+     * @return
+     */
+    public static String[] getFiles(int type) {
+
+        switch (type) {
+            case COVER:
+                return EBOOKCOVERFILE.list();
+            case EBOOK:
+                return EBOOKFILE.list();
+        }
+        return null;
+    }
 
 }

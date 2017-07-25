@@ -1,5 +1,6 @@
 package com.hebth.mobilelibrary.ui.main.fragments.home.view;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
@@ -12,6 +13,9 @@ import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.ui.base.BaseFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.home.adapter.CarouselVpAdapter;
 import com.hebth.mobilelibrary.ui.main.fragments.home.adapter.ContainerAdapter;
+import com.hebth.mobilelibrary.ui.opac.view.activity.OPACActivity;
+import com.hebth.mobilelibrary.ui.recommend.RecommendActivity;
+import com.hebth.mobilelibrary.ui.saoyisao.RQActivity;
 
 import java.util.ArrayList;
 
@@ -24,7 +28,7 @@ import java.util.ArrayList;
 public class HomeFragment extends BaseFragment implements Handler.Callback, View.OnClickListener {
     public static final String TAG = HomeFragment.class.getName();
     public static final int NEXTIMAGE = 0x200;
-    public static final int CAROUSEL_DELAY_TIME = 2000;
+    public static final int CAROUSEL_DELAY_TIME = 3000;
 
     private ViewPager carousel_vp;
     private LinearLayout OPAC_btn;
@@ -49,7 +53,7 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
     @Override
     public void initView() {
         carousel_vp = (ViewPager) mView.findViewById(R.id.vp_carousel_home);
-        OPAC_btn = (LinearLayout) mView.findViewById(R.id.btn_opac_home);
+        OPAC_btn = (LinearLayout) mView.findViewById(R.id.btn_search_home);
         recommend_btn = (LinearLayout) mView.findViewById(R.id.btn_recommend_home);
         borrowlist_btn = (LinearLayout) mView.findViewById(R.id.btn_borrowlist_home);
         rq_btn = (LinearLayout) mView.findViewById(R.id.btn_rq_home);
@@ -59,14 +63,13 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
         history_btn = (LinearLayout) mView.findViewById(R.id.btn_history_home);
         mTab = (TabLayout) mView.findViewById(R.id.tab_vp_home);
         container_vp = (ViewPager) mView.findViewById(R.id.vp_home);
-        //
+        //// TODO: 2017-06-20 首页轮播图
         ArrayList<String> mList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            mList.add("https://www.baidu.com/img/bd_logo1.png");
-        }
+        mList.add("http://cs.vmoiver.com/Uploads/cover/2017-06-19/5947b50fa864b_cut.jpeg");
+        mList.add("http://cs.vmoiver.com/Uploads/cover/2017-06-19/5947b4103b736_cut.jpeg");
+        mList.add("http://cs.vmoiver.com/Uploads/cover/2017-06-16/59438243ea8c7_cut.jpeg");
         carouselAdapter = new CarouselVpAdapter(getContext(), mList);
         carousel_vp.setAdapter(carouselAdapter);
-        mHandler.sendEmptyMessageDelayed(NEXTIMAGE, CAROUSEL_DELAY_TIME);
         //
         ArrayList<Fragment> fList = new ArrayList<>();
         fList.add(new NewsFragment());
@@ -74,6 +77,18 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
         ContainerAdapter containerAdapter = new ContainerAdapter(getFragmentManager(), fList);
         container_vp.setAdapter(containerAdapter);
         mTab.setupWithViewPager(container_vp);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mHandler.sendEmptyMessageDelayed(NEXTIMAGE, CAROUSEL_DELAY_TIME);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mHandler.removeMessages(NEXTIMAGE);
     }
 
     @Override
@@ -104,18 +119,17 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_opac_home:
-
+            case R.id.btn_search_home:
+                startActivity(OPACActivity.getOpacIntent(getContext()));
                 break;
             case R.id.btn_recommend_home:
-
+                startActivity(RecommendActivity.getRecommendIntent(getContext()));
                 break;
             case R.id.btn_borrowlist_home:
 
                 break;
-
             case R.id.btn_rq_home:
-
+                startActivity(new Intent(getContext(), RQActivity.class));
                 break;
             case R.id.btn_readerinfo_home:
 
@@ -132,4 +146,5 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
                 break;
         }
     }
+
 }

@@ -8,19 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.hebth.mobilelibrary.R;
-import com.hebth.mobilelibrary.beans.ReadCarouselBean;
-import com.hebth.mobilelibrary.beans.ReadFragmentBean;
 import com.hebth.mobilelibrary.myview.FullyGridLayoutManager;
 import com.hebth.mobilelibrary.myview.MyProgressDialog;
 import com.hebth.mobilelibrary.myview.WrapContentHeightViewpager;
 import com.hebth.mobilelibrary.ui.base.BaseFragment;
-import com.hebth.mobilelibrary.ui.main.fragments.ebook.adapter.ReadRvAdapter;
 import com.hebth.mobilelibrary.ui.main.fragments.ebook.adapter.ReadCarouselVpAdapter;
+import com.hebth.mobilelibrary.ui.main.fragments.ebook.adapter.ReadRvAdapter;
 import com.hebth.mobilelibrary.ui.main.fragments.ebook.presenter.ReadPresenter;
 import com.hebth.mobilelibrary.utils.ToastUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by hebth on 2017-06-09.
@@ -80,9 +75,18 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
         mRecycler.setAdapter(rvAdapter);
         mRecycler.setNestedScrollingEnabled(true);
         mPresenter.refreshData();
+    }
 
-        mHandler.sendEmptyMessageDelayed(NEXTIMAGE,CAROUSELDELAYTIME);
+    @Override
+    public void onResume() {
+        super.onResume();
+        mHandler.sendEmptyMessageDelayed(NEXTIMAGE, CAROUSELDELAYTIME);
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        mHandler.removeMessages(NEXTIMAGE);
     }
 
     @Override
@@ -96,7 +100,6 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
                 int visible = layoutManager.getChildCount();
                 int total = layoutManager.getItemCount();
                 int past = layoutManager.findFirstCompletelyVisibleItemPosition();
-                Log.e(TAG, "isLoading-->" + isLoading + ",newState-->" + newState + ",visible-->" + visible + ",past-->" + past + ",total-->" + total);
                 if (isLoading && newState == 0 && (visible + past) >= total) {
                     isLoading = false;
                     pageNum++;
@@ -153,7 +156,7 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
         switch (msg.what) {
             case NEXTIMAGE:
                 carousel_vp.setCurrentItem(carousel_vp.getCurrentItem() + 1);
-                mHandler.sendEmptyMessageDelayed(NEXTIMAGE,CAROUSELDELAYTIME);
+                mHandler.sendEmptyMessageDelayed(NEXTIMAGE, CAROUSELDELAYTIME);
                 break;
         }
         return false;

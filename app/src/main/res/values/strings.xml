@@ -7,6 +7,13 @@
     <string name="open">打开</string>
     <string name="close">关闭</string>
 
+    <!--二维码扫描-->
+    <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
+    <string name="viewfinderview_status_text2">即可自动扫描</string>
+    <string name="button_ok">OK</string>
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+
+    <!---->
 
     <string name="title_activity_detail">DetailActivity</string>
     <string name="large_text">
@@ -115,4 +122,11 @@
         <item>关于我们</item>
         <item>意见建议</item>
     </string-array>
+
+    <string-array name="spinner_opac">
+        <item>题名</item>
+        <item>作者</item>
+        <item>出版社</item>
+    </string-array>
+    <string name="title_activity_news_detail">NewsDetailActivity</string>
 </resources>
