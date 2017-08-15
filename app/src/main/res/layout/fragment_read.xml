@@ -17,12 +17,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <com.hebth.mobilelibrary.myview.WrapContentHeightViewpager
-                    android:id="@+id/vp_read"
+<!--
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
+                    <EditText
+                        android:id="@+id/et_searchvalue_read"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/bg_input_ebook"
+                        android:hint="请输入检索内容.."
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/btn_search_read"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_button_ebook"
+                        android:text="开始检索"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_unsearch_read"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_button_ebook"
+                        android:text="退出检索"
+                        android:textSize="12sp" />
+                </LinearLayout>-->
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_read"
                     android:layout_width="match_parent"
@@ -33,7 +71,6 @@
         </com.hebth.mobilelibrary.myview.MyScrollview>
 
     </android.support.v4.widget.SwipeRefreshLayout>
-
 
 
 </LinearLayout>

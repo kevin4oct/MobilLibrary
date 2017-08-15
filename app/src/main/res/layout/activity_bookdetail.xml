@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.hebth.mobilelibrary.ui.bookdetail.BookDetailActivity">
 
+    <include
+        android:id="@+id/toolbar_borrowbookdetail"
+        layout="@layout/common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appBarSize" />
     <TextView
         android:id="@+id/tv_bookdetail"
         android:layout_width="match_parent"

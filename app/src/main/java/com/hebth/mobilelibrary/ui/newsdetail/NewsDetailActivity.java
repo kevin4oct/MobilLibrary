@@ -10,12 +10,13 @@ import android.widget.TextView;
 import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.beans.NewsBean;
 import com.hebth.mobilelibrary.ui.base.BaseActivity;
-import com.orhanobut.logger.Logger;
 
 import org.xutils.view.annotation.ViewInject;
 
 public class NewsDetailActivity extends BaseActivity {
 
+    @ViewInject(R.id.tv_title_news)
+    private TextView title_tv;
     @ViewInject(R.id.tv_content_news)
     private TextView content_tv;
 
@@ -41,6 +42,7 @@ public class NewsDetailActivity extends BaseActivity {
         setSupportActionBar(mToolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //
+        title_tv.setText(bean.getQTitle());
         content_tv.setText(bean.getQContent());
     }
 

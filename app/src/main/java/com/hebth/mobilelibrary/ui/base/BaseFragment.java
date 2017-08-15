@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 /**
  * Created by hebth on 2017-06-08.
@@ -23,7 +24,7 @@ public abstract class BaseFragment extends Fragment {
 
         mView = inflater.inflate(getLayoutRes(), container, false);
 
-        initView();
+        initView(savedInstanceState);
 
         initListener();
 
@@ -32,7 +33,23 @@ public abstract class BaseFragment extends Fragment {
 
     public abstract int getLayoutRes();
 
-    public abstract void initView();
+    public abstract void initView(Bundle savedInstanceState);
 
     public abstract void initListener();
+
+    private void unbindDrawables(View view)
+    {
+        if (view.getBackground() != null)
+        {
+            view.getBackground().setCallback(null);
+        }
+        if (view instanceof ViewGroup && !(view instanceof AdapterView))
+        {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++)
+            {
+                unbindDrawables(((ViewGroup) view).getChildAt(i));
+            }
+            ((ViewGroup) view).removeAllViews();
+        }
+    }
 }

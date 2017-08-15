@@ -8,11 +8,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hebth.mobilelibrary.ui.bookdetail.BookDetailActivity;
 import com.hebth.mobilelibrary.ui.ebookdetail.view.EBookDetailActivity;
 import com.hebth.mobilelibrary.utils.ToastUtils;
 import com.karics.library.zxing.android.CaptureActivity;
-import com.orhanobut.logger.Logger;
 
 public class RQActivity extends AppCompatActivity {
 
@@ -82,8 +80,8 @@ public class RQActivity extends AppCompatActivity {
                 if (split.length > 1) {
                     startActivity(EBookDetailActivity.getDetailActivity(this, split[1]));
                 } else {
-                    startActivity(BookDetailActivity.getBookDetailIntent(this, BookDetailActivity.ISBNSEARCH, split[0]));
-
+//                    startActivity(BookDetailActivity.getBookDetailIntent(this, BookDetailActivity.ISBNSEARCH, split[0]));
+                    ToastUtils.showText(this, "该条码无效..");
                 }
             }
         }

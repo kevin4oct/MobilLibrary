@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="20dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal">
+
+    <!--书名-->
+    <TextView
+        android:id="@+id/bookname_item_borrowing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="书名："
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!--借书日期-->
+    <TextView
+        android:id="@+id/borrowtime_item_borrowing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bookname_item_borrowing"
+        android:layout_marginTop="5dp"
+        android:text="借书日期："
+        android:textSize="14sp" />
+
+    <!--应还日期-->
+    <TextView
+        android:id="@+id/givebacktime_item_borrowing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/borrowtime_item_borrowing"
+        android:layout_marginTop="5dp"
+        android:text="应还日期："
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/givebacktime_item_borrowing"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray" />
+
+
+    <Button
+        android:id="@+id/btn_reborrow_borrowing"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:text="续借" />
+</com.zhy.android.percent.support.PercentRelativeLayout>

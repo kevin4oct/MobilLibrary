@@ -36,7 +36,7 @@ public class DetailPresenter {
      * 加载数据
      */
     public void loadData() {
-        mView.showLoading("");
+        mView.showLoading("加载中..");
         mModel.loadData(mView.getBookId(), new OnDetailListener() {
             @Override
             public void success(BookDetailBean bean) {
@@ -96,7 +96,7 @@ public class DetailPresenter {
      */
     public void downLoadBook() {
 
-        mView.showLoading("");
+        mView.showLoading("下载中..");
 
         if (Environment.MEDIA_MOUNTED.equals(FileUtils.SDCARDSTATE)) {//判断存储卡状态，如果正常
             Log.e(TAG, "downLoadBook: 卡状态正常");

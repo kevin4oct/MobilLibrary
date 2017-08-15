@@ -5,11 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tablayout_ebook"
+    <com.zhy.android.percent.support.PercentRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        app:tabMode="fixed" />
+        android:layout_height="45dp"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/ebook"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_marginLeftPercent="4%" />
+
+        <ImageView
+            android:id="@+id/iv_search_ebook"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/btn_search"
+            app:layout_marginRightPercent="4%" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_ebook"

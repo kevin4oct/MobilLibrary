@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -18,15 +19,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.folioreader.activity.FolioActivity;
 import com.hebth.mobilelibrary.R;
-import com.hebth.mobilelibrary.myview.MyProgressDialog;
 import com.hebth.mobilelibrary.ui.base.BaseActivity;
 import com.hebth.mobilelibrary.ui.ebookdetail.presenter.DetailPresenter;
 import com.hebth.mobilelibrary.utils.FileUtils;
 import com.hebth.mobilelibrary.utils.ToastUtils;
 import com.orhanobut.logger.Logger;
-import com.squareup.picasso.Picasso;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -38,7 +38,7 @@ public class EBookDetailActivity extends BaseActivity implements IDetailView {
     public static final int GALLERY_REQUEST = 0x300;
 
     @ViewInject(R.id.iv_cover_bookdetail)
-    private ImageView cover_iv;
+    private SimpleDraweeView cover_iv;
     @ViewInject(R.id.tv_bookname_bookdetail)
     private TextView bookName_tv;
     @ViewInject(R.id.tv_bookauthor_bookdetail)
@@ -57,8 +57,6 @@ public class EBookDetailActivity extends BaseActivity implements IDetailView {
     private TextView description_tv;
     @ViewInject(R.id.tv_tablecontent_bookdetail)
     private TextView tableContent_tv;
-    //
-    private MyProgressDialog dialog;
     //
     private String bookId;
     //    private String downloadPath;
@@ -89,20 +87,17 @@ public class EBookDetailActivity extends BaseActivity implements IDetailView {
 
     @Override
     public void initView() {
-
+        //
         Toolbar mToolBar = (Toolbar) findViewById(R.id.toolbar_detail);
         mToolBar.setTitleTextColor(Color.WHITE);
         mToolBar.setTitle("图书详情");
         mToolBar.setNavigationIcon(R.mipmap.btn_back);
         setSupportActionBar(mToolBar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //
         bookId = getIntent().getStringExtra("bookId");
-        Logger.e(TAG, "接收到bookId： " + bookId);
-
         //加载图书详细数据
         mPresenter.loadData();
-
         //注册广播接收者，监听下载状态
         registerReceiver(receiver,
                 new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
@@ -130,14 +125,12 @@ public class EBookDetailActivity extends BaseActivity implements IDetailView {
 
     @Override
     public void showLoading(String title) {
-        dialog = MyProgressDialog.show(this, "正在加载，请稍后..", false, null);
+
     }
 
     @Override
     public void stopLoading() {
-        if (dialog != null) {
-            dialog.dismiss();
-        }
+
     }
 
     @Override
@@ -152,8 +145,10 @@ public class EBookDetailActivity extends BaseActivity implements IDetailView {
 
     @Override
     public void setBookCover(String imagePath) {
-        Picasso.with(this).load(imagePath).placeholder(R.mipmap.temp_ebook)
-                .error(R.mipmap.temp_ebook).into(cover_iv);
+
+        cover_iv.setImageURI(imagePath);
+//        Picasso.with(this).load(imagePath).placeholder(R.mipmap.temp_small)
+//                .error(R.mipmap.temp_small).into(cover_iv);
     }
 
     @Override

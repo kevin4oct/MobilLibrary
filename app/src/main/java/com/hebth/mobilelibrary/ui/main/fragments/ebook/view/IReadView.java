@@ -13,6 +13,8 @@ public interface IReadView extends BaseView{
 
     String getPageNum();
 
+    String getKeyWord();
+
     ReadCarouselVpAdapter getVpAdapter();
 
     ReadRvAdapter getRvAdapter();

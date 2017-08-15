@@ -1,5 +1,7 @@
 package com.hebth.mobilelibrary.ui.opac.view.fragment;
 
+import android.os.Bundle;
+
 import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.ui.base.BaseFragment;
 
@@ -16,7 +18,7 @@ public class BorrowedListFragment extends BaseFragment {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
 
     }
 

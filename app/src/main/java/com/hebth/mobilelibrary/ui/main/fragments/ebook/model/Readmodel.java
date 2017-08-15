@@ -62,14 +62,14 @@ public class Readmodel implements IReadModel {
      * @param listener
      */
     @Override
-    public void getContainerData(String pageNum, final OnReadContainerListener listener) {
+    public void getContainerData(String pageNum,String keyword, final OnReadContainerListener listener) {
 
         ReadRequest request = new ReadRequest();
         request.addQueryStringParameter("rankType", "1");
         request.addQueryStringParameter("pageSize", "21");
         request.addQueryStringParameter("pageNum", pageNum);
         request.addQueryStringParameter("pageType", "3");
-        request.addQueryStringParameter("keyword", "");
+        request.addQueryStringParameter("keyword", keyword);
         request.addQueryStringParameter("classificationType", "");
         request.addQueryStringParameter("classificationNumber", "");
         request.addQueryStringParameter("classificationId", "");

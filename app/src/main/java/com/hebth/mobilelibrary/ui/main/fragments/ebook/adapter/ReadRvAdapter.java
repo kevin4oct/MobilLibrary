@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.base.AppConstant;
 import com.hebth.mobilelibrary.beans.ReadFragmentBean;
 import com.hebth.mobilelibrary.ui.ebookdetail.view.EBookDetailActivity;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,9 +56,11 @@ public class ReadRvAdapter extends RecyclerView.Adapter<ReadRvAdapter.ViewHolder
         ReadFragmentBean.DataBean.ListBean listBean = mList.get(position);
         if (listBean != null) {
             holder.tv.setText(listBean.getBookName());
-            Picasso.with(context)
-                    .load(AppConstant.RESOURCESTR + listBean.getBookPictures().get(0).getFilePath())
-                    .into(holder.iv);
+//            Picasso.with(context)
+//                    .load(AppConstant.RESOURCESTR + listBean.getBookPictures().get(0).getFilePath())
+//                    .placeholder(R.mipmap.temp_small)
+//                    .into(holder.iv);
+            holder.iv.setImageURI(AppConstant.RESOURCESTR + listBean.getBookPictures().get(0).getFilePath());
         }
     }
 
@@ -97,18 +99,17 @@ public class ReadRvAdapter extends RecyclerView.Adapter<ReadRvAdapter.ViewHolder
     @Override
     public void onClick(View v) {
         int position = mRecycler.getChildAdapterPosition(v);
-        Log.e(TAG, "onClick: "+position );
         context.startActivity(EBookDetailActivity.getDetailActivity(context,mList.get(position).getId()));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView iv;
+        public SimpleDraweeView iv;
         public TextView tv;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            iv = (ImageView) itemView.findViewById(R.id.iv_read_item);
+            iv = (SimpleDraweeView) itemView.findViewById(R.id.iv_read_item);
             tv = (TextView) itemView.findViewById(R.id.tv_read_item);
         }
     }

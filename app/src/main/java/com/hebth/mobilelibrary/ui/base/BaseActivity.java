@@ -2,7 +2,6 @@ package com.hebth.mobilelibrary.ui.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import org.xutils.x;
 
@@ -12,6 +11,7 @@ import org.xutils.x;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
+
     public static final String TAG = BaseActivity.class.getSimpleName();
 
     @Override
@@ -38,5 +38,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract void initView();
 
     public abstract void initListener();
+
 
 }

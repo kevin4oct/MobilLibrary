@@ -12,12 +12,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hebth.mobilelibrary.R;
-import com.hebth.mobilelibrary.beans.OPACBean;
+import com.hebth.mobilelibrary.beans.BookBean;
 import com.hebth.mobilelibrary.ui.base.BaseActivity;
-import com.hebth.mobilelibrary.ui.opac.net.OPACRequestParams;
+import com.hebth.mobilelibrary.net.BookRequestParams;
 import com.hebth.mobilelibrary.utils.ToastUtils;
 import com.orhanobut.logger.Logger;
 
@@ -37,13 +38,15 @@ public class OPACListActivity extends BaseActivity {
     private SwipeRefreshLayout mRefresh;
     @ViewInject(R.id.recycler_opaclist)
     private RecyclerView mRecycler;
+    @ViewInject(R.id.loadhint_opaclist)
+    private LinearLayout loadHint_ll;
 
     private String category, categoryValue;
     private int pageCount = 20;//每页显示的条数
     private int page = 0;//当前的页数
     private boolean isLoad = true;//是否可以加载的标记
 
-    private List<OPACBean> mList;
+    private List<BookBean> mList;
     private OPACRecyclerAdapter adapter;
     private LinearLayoutManager layoutManager;
 
@@ -115,19 +118,20 @@ public class OPACListActivity extends BaseActivity {
     private void getDateFormNet(final int type) {
 
         isLoad = false;
-        OPACRequestParams opacRequestParams = new OPACRequestParams();
-        opacRequestParams.category = this.category;
-        opacRequestParams.cateValue = this.categoryValue;
-        Logger.e("检索类别：" + opacRequestParams.category + "检索内容：" + opacRequestParams.cateValue);
-        opacRequestParams.author = "";
-        opacRequestParams.publisher = "";
-        opacRequestParams.pageCount = "" + pageCount;
-        opacRequestParams.page = "" + page;
+        setLoadHintShowAndHide();
+        BookRequestParams bookRequestParams = new BookRequestParams();
+        bookRequestParams.category = this.category;
+        bookRequestParams.cateValue = this.categoryValue;
+        Logger.e("检索类别：" + bookRequestParams.category + "检索内容：" + bookRequestParams.cateValue);
+        bookRequestParams.author = "";
+        bookRequestParams.publisher = "";
+        bookRequestParams.pageCount = "" + pageCount;
+        bookRequestParams.page = "" + page;
 
-        x.http().post(opacRequestParams, new Callback.CommonCallback<List<OPACBean>>() {
+        x.http().post(bookRequestParams, new Callback.CommonCallback<List<BookBean>>() {
 
             @Override
-            public void onSuccess(List<OPACBean> result) {
+            public void onSuccess(List<BookBean> result) {
                 if (result == null || result.size() == 0) {
                     ToastUtils.showText(OPACListActivity.this, "未查询到结果..");
                 } else {
@@ -159,6 +163,7 @@ public class OPACListActivity extends BaseActivity {
             public void onFinished() {
                 isLoad = true;
                 mRefresh.setRefreshing(false);
+                setLoadHintShowAndHide();
             }
         });
     }
@@ -188,10 +193,10 @@ public class OPACListActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(OPACRecyclerViewholder holder, int position) {
-            OPACBean opacBean = mList.get(position);
-            if (opacBean != null) {
+            BookBean bookBean = mList.get(position);
+            if (bookBean != null) {
                 //书名
-                String bookName = opacBean.getBookName();
+                String bookName = bookBean.getBookName();
                 if (bookName == null || "".equals(bookName)) {
                     holder.bookname.setText("...");
                 } else {
@@ -199,7 +204,7 @@ public class OPACListActivity extends BaseActivity {
                 }
 
                 //作者
-                String firstAuthor = opacBean.getFirstAuthor();
+                String firstAuthor = bookBean.getFirstAuthor();
                 if (firstAuthor == null || "".equals(firstAuthor)) {
                     holder.author.setText("...");
                 } else {
@@ -207,7 +212,7 @@ public class OPACListActivity extends BaseActivity {
                 }
 
                 //出版社
-                String publishName = opacBean.getPublishName();
+                String publishName = bookBean.getPublishName();
                 if (publishName == null || "".equals(publishName)) {
                     holder.publish.setText("...");
                 } else {
@@ -215,7 +220,7 @@ public class OPACListActivity extends BaseActivity {
                 }
 
                 //索书号
-                String chineseSort = opacBean.getChineseSort();
+                String chineseSort = bookBean.getChineseSort();
                 if (chineseSort == null || "".equals(chineseSort)) {
                     holder.chinesesort.setText("...");
                 } else {
@@ -249,4 +254,15 @@ public class OPACListActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 设置加载提示的显示和隐藏
+     */
+    private void setLoadHintShowAndHide() {
+        if (loadHint_ll.getVisibility() == View.GONE) {
+            loadHint_ll.setVisibility(View.VISIBLE);
+        } else {
+            loadHint_ll.setVisibility(View.GONE);
+        }
+
+    }
 }

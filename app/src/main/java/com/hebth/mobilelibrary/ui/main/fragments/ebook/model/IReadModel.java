@@ -11,5 +11,5 @@ public interface IReadModel extends BaseModel{
 
     void getCarouselData(OnReadCarouselListener listener);
 
-    void getContainerData(String pageNum, OnReadContainerListener listener);
+    void getContainerData(String pageNum,String keyWord, OnReadContainerListener listener);
 }

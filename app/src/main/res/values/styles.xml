@@ -8,6 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- WelcomeActivity theme. -->
+    <style name="Welcom" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!-- 隐藏状态栏 -->
+        <item name="android:windowFullscreen">true</item>
+        <!-- 隐藏标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="radiobutton_main">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
@@ -38,7 +50,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textSize">16sp</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:layout_marginTop">5dp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -48,4 +59,9 @@
         <item name="tabIndicatorHeight">2dp</item>
     </style>
 
+    <style name="userinfo_ll">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
 </resources>

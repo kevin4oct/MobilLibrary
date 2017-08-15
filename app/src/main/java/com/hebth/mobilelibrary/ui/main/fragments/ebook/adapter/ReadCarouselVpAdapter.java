@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.beans.ReadCarouselBean;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,18 +39,20 @@ public class ReadCarouselVpAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
 
         position = position % (mLists != null ? mLists.size() : 1);
-        ImageView imageView = new ImageView(context);
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//        ImageView imageView = new ImageView(context);
+//        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         String fileUrl = mLists.get(position).getFileUrl();
 
-        Picasso.with(context)
-                .load(fileUrl)
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
-                .into(imageView);
-        container.addView(imageView);
+//        Picasso.with(context)
+//                .load(fileUrl)
+//                .placeholder(R.mipmap.temp_big)
+//                .error(R.mipmap.ic_launcher)
+//                .into(imageView);
+        SimpleDraweeView simpleDraweeView = new SimpleDraweeView(context);
+        simpleDraweeView.setImageURI(fileUrl);
+        container.addView(simpleDraweeView);
 
-        return imageView;
+        return simpleDraweeView;
     }
 
 

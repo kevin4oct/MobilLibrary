@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hebth.mobilelibrary.ui.about.AboutActivity">
+
+    <include
+        android:id="@+id/toolbar_about"
+        layout="@layout/common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appBarSize" />
+
+    <ImageView
+        android:id="@+id/iv_appicon_about"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_app"
+        app:layout_heightPercent="9%"
+        app:layout_marginTopPercent="20%" />
+
+    <!--版本-->
+    <TextView
+        android:id="@+id/tv_version_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_appicon_about"
+        android:gravity="center"
+        android:text="@string/version"
+        app:layout_marginTopPercent="2%" />
+
+    <!--官网-->
+    <TextView
+        android:id="@+id/tv_url_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_version_about"
+        android:gravity="center"
+        android:text="@string/company_url"
+        app:layout_marginTopPercent="2%" />
+
+    <!--客服电话-->
+    <TextView
+        android:id="@+id/tv_tel_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_url_about"
+        android:gravity="center"
+        android:text="@string/company_tel"
+        app:layout_marginTopPercent="1%" />
+
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

@@ -1,6 +1,7 @@
 package com.hebth.mobilelibrary.ui.main.fragments.home.view;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.TabLayout;
@@ -10,10 +11,16 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.hebth.mobilelibrary.R;
+import com.hebth.mobilelibrary.myview.NavigationDotBar;
 import com.hebth.mobilelibrary.ui.base.BaseFragment;
+import com.hebth.mobilelibrary.ui.borrowList.BorrowListActivity;
+import com.hebth.mobilelibrary.ui.borrowing.BorrowingActivity;
+import com.hebth.mobilelibrary.ui.ebookshelf.EbookShelfActivity;
+import com.hebth.mobilelibrary.ui.history.HistoryActivity;
 import com.hebth.mobilelibrary.ui.main.fragments.home.adapter.CarouselVpAdapter;
 import com.hebth.mobilelibrary.ui.main.fragments.home.adapter.ContainerAdapter;
 import com.hebth.mobilelibrary.ui.opac.view.activity.OPACActivity;
+import com.hebth.mobilelibrary.ui.readerinfo.ReaderInfoActivity;
 import com.hebth.mobilelibrary.ui.recommend.RecommendActivity;
 import com.hebth.mobilelibrary.ui.saoyisao.RQActivity;
 
@@ -42,6 +49,8 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
     private TabLayout mTab;
     private ViewPager container_vp;
     private CarouselVpAdapter carouselAdapter;
+    //小圆点导航
+    private NavigationDotBar navigationBar;
 
     private Handler mHandler = new Handler(this);
 
@@ -51,7 +60,7 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         carousel_vp = (ViewPager) mView.findViewById(R.id.vp_carousel_home);
         OPAC_btn = (LinearLayout) mView.findViewById(R.id.btn_search_home);
         recommend_btn = (LinearLayout) mView.findViewById(R.id.btn_recommend_home);
@@ -63,20 +72,38 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
         history_btn = (LinearLayout) mView.findViewById(R.id.btn_history_home);
         mTab = (TabLayout) mView.findViewById(R.id.tab_vp_home);
         container_vp = (ViewPager) mView.findViewById(R.id.vp_home);
-        //// TODO: 2017-06-20 首页轮播图
-        ArrayList<String> mList = new ArrayList<>();
-        mList.add("http://cs.vmoiver.com/Uploads/cover/2017-06-19/5947b50fa864b_cut.jpeg");
-        mList.add("http://cs.vmoiver.com/Uploads/cover/2017-06-19/5947b4103b736_cut.jpeg");
-        mList.add("http://cs.vmoiver.com/Uploads/cover/2017-06-16/59438243ea8c7_cut.jpeg");
+        //添加轮播图
+//        ArrayList<ImageView> mList = new ArrayList<>();
+//        ImageView imageView01 = new ImageView(getContext());
+//        imageView01.setImageResource(R.mipmap.carouse01);
+//        mList.add(imageView01);
+//        ImageView imageView02 = new ImageView(getContext());
+//        imageView02.setImageResource(R.mipmap.carouse02);
+//        mList.add(imageView02);
+//        ImageView imageView03 = new ImageView(getContext());
+//        imageView03.setImageResource(R.mipmap.carouse03);
+//        mList.add(imageView03);
+//        ImageView imageView04 = new ImageView(getContext());
+//        imageView04.setImageResource(R.mipmap.carouse04);
+//        mList.add(imageView04);
+        ArrayList<Integer> mList = new ArrayList<>();
+        mList.add(R.mipmap.carouse01);
+        mList.add(R.mipmap.carouse02);
+        mList.add(R.mipmap.carouse03);
+        mList.add(R.mipmap.carouse04);
         carouselAdapter = new CarouselVpAdapter(getContext(), mList);
         carousel_vp.setAdapter(carouselAdapter);
-        //
+        //添加碎片
         ArrayList<Fragment> fList = new ArrayList<>();
         fList.add(new NewsFragment());
         fList.add(new SystemInfoFragment());
         ContainerAdapter containerAdapter = new ContainerAdapter(getFragmentManager(), fList);
         container_vp.setAdapter(containerAdapter);
         mTab.setupWithViewPager(container_vp);
+        //导航小圆点
+        navigationBar = (NavigationDotBar) mView.findViewById(R.id.navigation_home);
+        navigationBar.setDotNum(mList.size());
+        navigationBar.setDotMargin(50);
     }
 
     @Override
@@ -101,6 +128,23 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
         shelf_btn.setOnClickListener(this);
         borrowing_btn.setOnClickListener(this);
         history_btn.setOnClickListener(this);
+        // 轮播图滑动监听，控制小圆点
+        carousel_vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                navigationBar.setCurrentPosition(carousel_vp.getCurrentItem());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
@@ -108,7 +152,10 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
 
         switch (msg.what) {
             case NEXTIMAGE:
+                //控制轮播图位置
                 carousel_vp.setCurrentItem(carousel_vp.getCurrentItem() + 1);
+                //设置小圆点位置
+                navigationBar.setCurrentPosition(carousel_vp.getCurrentItem());
                 mHandler.sendEmptyMessageDelayed(NEXTIMAGE, CAROUSEL_DELAY_TIME);
                 break;
         }
@@ -126,23 +173,22 @@ public class HomeFragment extends BaseFragment implements Handler.Callback, View
                 startActivity(RecommendActivity.getRecommendIntent(getContext()));
                 break;
             case R.id.btn_borrowlist_home:
-
+                startActivity(BorrowListActivity.getBorrowListIntent(getContext()));
                 break;
             case R.id.btn_rq_home:
                 startActivity(new Intent(getContext(), RQActivity.class));
                 break;
             case R.id.btn_readerinfo_home:
-
+                startActivity(ReaderInfoActivity.getReaderInfoIntent(getContext()));
                 break;
-
             case R.id.btn_shelf_home:
-
+                startActivity(EbookShelfActivity.getShelfIntent(getContext()));
                 break;
             case R.id.btn_borrowing_home:
-
+                startActivity(BorrowingActivity.getBorrowingIntent(getContext()));
                 break;
             case R.id.btn_history_home:
-
+                startActivity(HistoryActivity.getHistoryIntent(getContext()));
                 break;
         }
     }

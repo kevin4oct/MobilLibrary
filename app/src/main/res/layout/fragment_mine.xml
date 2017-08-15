@@ -13,16 +13,30 @@
         android:src="@mipmap/bg_mine"
         app:layout_heightPercent="30%" />
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/iv_photo_mine"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
-        android:scaleType="fitStart"
-        android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="15dp"
+        app:actualImageScaleType="centerCrop"
         app:layout_heightPercent="12%"
         app:layout_marginTopPercent="25%"
-        app:layout_widthPercent="16%" />
+        app:layout_widthPercent="16%"
+        app:placeholderImage="@mipmap/icon_user_mine"
+        app:placeholderImageScaleType="centerCrop"
+        app:roundAsCircle="true" />
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_photo_mine"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_marginStart="40dp"-->
+    <!--android:scaleType="fitStart"-->
+    <!--android:src="@mipmap/icon_user_mine"-->
+    <!--app:layout_heightPercent="12%"-->
+    <!--app:layout_marginTopPercent="25%"-->
+    <!--app:layout_widthPercent="16%" />-->
 
     <TextView
         android:id="@+id/tv_username_mine"
@@ -32,7 +46,7 @@
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/iv_photo_mine"
         android:gravity="center_vertical"
-        android:text="尼古拉斯赵四"
+        android:text="用户名"
         android:textColor="@android:color/black"
         app:layout_heightPercent="6%" />
 

@@ -5,13 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.hebth.mobilelibrary.R;
 import com.hebth.mobilelibrary.beans.EBookBean;
-import com.orhanobut.logger.Logger;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,19 +45,21 @@ public class ShelfRvAdapter extends RecyclerView.Adapter<ShelfRvAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Picasso.with(context).load(mList.get(position).getBookCover())
-                .placeholder(R.mipmap.temp_ebook).into(holder.bookCover);
+//        Picasso.with(context).load(mList.get(position).getBookCover())
+//                .placeholder(R.mipmap.temp_small).into(holder.bookCover);
 
+        holder.bookCover.setImageURI(mList.get(position).getBookCover());
         holder.bookName.setText(mList.get(position).getBookName());
 
     }
 
     /**
      * 刷新数据
+     *
      * @param mList
      */
-    public void refreshData(List<EBookBean> mList){
-        if (mList!=null) {
+    public void refreshData(List<EBookBean> mList) {
+        if (mList != null) {
             this.mList.clear();
             this.mList.addAll(mList);
             notifyDataSetChanged();
@@ -73,12 +73,12 @@ public class ShelfRvAdapter extends RecyclerView.Adapter<ShelfRvAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView bookCover;
+        public SimpleDraweeView bookCover;
         public TextView bookName;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            bookCover = (ImageView) itemView.findViewById(R.id.iv_item_shelf);
+            bookCover = (SimpleDraweeView) itemView.findViewById(R.id.iv_item_shelf);
             bookName = (TextView) itemView.findViewById(R.id.tv_item_shelf);
         }
     }

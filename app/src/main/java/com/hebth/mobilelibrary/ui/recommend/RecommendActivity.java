@@ -12,13 +12,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hebth.mobilelibrary.R;
-import com.hebth.mobilelibrary.beans.OPACBean;
+import com.hebth.mobilelibrary.beans.BookBean;
 import com.hebth.mobilelibrary.ui.base.BaseActivity;
-import com.hebth.mobilelibrary.ui.opac.net.OPACRequestParams;
-import com.hebth.mobilelibrary.ui.opac.view.activity.OPACListActivity;
 import com.hebth.mobilelibrary.ui.recommend.net.RecommendRequestParams;
 import com.hebth.mobilelibrary.utils.ToastUtils;
 import com.orhanobut.logger.Logger;
@@ -39,12 +38,14 @@ public class RecommendActivity extends BaseActivity {
     private SwipeRefreshLayout mRefresh;
     @ViewInject(R.id.recycler_recommend)
     private RecyclerView mRecycler;
+    @ViewInject(R.id.loadhint_recommend)
+    private LinearLayout loadHint_ll;
 
     private int pageCount = 20;//每次加载的条目数
     private int page = 0;//当前页数
     private boolean isLoad = true;
 
-    private List<OPACBean> mList;
+    private List<BookBean> mList;
     private RecommendRecyclerAdapter adapter;
     private LinearLayoutManager layoutManager;
 
@@ -105,23 +106,25 @@ public class RecommendActivity extends BaseActivity {
             }
         });
     }
+
     /**
      * 从网络获取数据
      */
     private void getDateFormNet(final int type) {
 
         isLoad = false;
+        setLoadHintShowAndHide();
         RecommendRequestParams recommendRequestParams = new RecommendRequestParams();
 
         recommendRequestParams.pageCount = "" + pageCount;
         recommendRequestParams.page = "" + page;
 
-        x.http().post(recommendRequestParams, new Callback.CommonCallback<List<OPACBean>>() {
+        x.http().post(recommendRequestParams, new Callback.CommonCallback<List<BookBean>>() {
 
             @Override
-            public void onSuccess(List<OPACBean> result) {
+            public void onSuccess(List<BookBean> result) {
                 if (result == null || result.size() == 0) {
-                    ToastUtils.showText(RecommendActivity.this, "未查询到结果..");
+                    ToastUtils.showText(RecommendActivity.this, "已无更多结果..");
                 } else {
                     switch (type) {
                         case LOAD://上拉加载
@@ -151,6 +154,7 @@ public class RecommendActivity extends BaseActivity {
             public void onFinished() {
                 isLoad = true;
                 mRefresh.setRefreshing(false);
+                setLoadHintShowAndHide();
             }
         });
     }
@@ -180,10 +184,10 @@ public class RecommendActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(RecommendActivity.RecommendRecyclerViewholder holder, int position) {
-            OPACBean opacBean = mList.get(position);
-            if (opacBean != null) {
+            BookBean bookBean = mList.get(position);
+            if (bookBean != null) {
                 //书名
-                String bookName = opacBean.getBookName();
+                String bookName = bookBean.getBookName();
                 if (bookName == null || "".equals(bookName)) {
                     holder.bookname.setText("...");
                 } else {
@@ -191,7 +195,7 @@ public class RecommendActivity extends BaseActivity {
                 }
 
                 //作者
-                String firstAuthor = opacBean.getFirstAuthor();
+                String firstAuthor = bookBean.getFirstAuthor();
                 if (firstAuthor == null || "".equals(firstAuthor)) {
                     holder.author.setText("...");
                 } else {
@@ -199,7 +203,7 @@ public class RecommendActivity extends BaseActivity {
                 }
 
                 //出版社
-                String publishName = opacBean.getPublishName();
+                String publishName = bookBean.getPublishName();
                 if (publishName == null || "".equals(publishName)) {
                     holder.publish.setText("...");
                 } else {
@@ -207,7 +211,7 @@ public class RecommendActivity extends BaseActivity {
                 }
 
                 //索书号
-                String chineseSort = opacBean.getChineseSort();
+                String chineseSort = bookBean.getChineseSort();
                 if (chineseSort == null || "".equals(chineseSort)) {
                     holder.chinesesort.setText("...");
                 } else {
@@ -241,4 +245,15 @@ public class RecommendActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 设置加载提示的显示和隐藏
+     */
+    private void setLoadHintShowAndHide() {
+        if (loadHint_ll.getVisibility() == View.GONE) {
+            loadHint_ll.setVisibility(View.VISIBLE);
+        } else {
+            loadHint_ll.setVisibility(View.GONE);
+        }
+
+    }
 }

@@ -1,16 +1,12 @@
 package com.hebth.mobilelibrary.ui.main.fragments.ebook.view;
 
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.View;
 
 import com.hebth.mobilelibrary.R;
-import com.hebth.mobilelibrary.myview.FullyGridLayoutManager;
-import com.hebth.mobilelibrary.myview.MyProgressDialog;
-import com.hebth.mobilelibrary.myview.WrapContentHeightViewpager;
 import com.hebth.mobilelibrary.ui.base.BaseFragment;
 import com.hebth.mobilelibrary.ui.main.fragments.ebook.adapter.ReadCarouselVpAdapter;
 import com.hebth.mobilelibrary.ui.main.fragments.ebook.adapter.ReadRvAdapter;
@@ -30,24 +26,25 @@ import com.hebth.mobilelibrary.utils.ToastUtils;
  * 资源前缀---------------------------------
  * http://101.201.114.210/591/ebooks/    +   参数string
  */
-public class ReadFragment extends BaseFragment implements IReadView, SwipeRefreshLayout.OnRefreshListener, Handler.Callback {
+public class ReadFragment extends BaseFragment implements IReadView, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
     public static final String TAG = ReadFragment.class.getSimpleName();
-    public static final int NEXTIMAGE = 0x300;
-    public static final int CAROUSELDELAYTIME = 3000;
 
     private SwipeRefreshLayout mSrl;
-    private WrapContentHeightViewpager carousel_vp;
+    //    private WrapContentHeightViewpager carousel_vp;
     private RecyclerView mRecycler;
     private ReadRvAdapter rvAdapter;
     private ReadCarouselVpAdapter vpAdapter;
     private ReadPresenter mPresenter = new ReadPresenter(this);
-    private MyProgressDialog dialog;
+    //搜索区域
+//    private EditText searchValue_et;
+//    private Button searchBtn;
+//    private Button unSearchBtn;
 
     private boolean isLoading = true;//是否可加载的标记
     private int pageNum = 1;//页数
-    private FullyGridLayoutManager layoutManager;
+    private GridLayoutManager layoutManager;
 
-    private Handler mHandler = new Handler(this);
+    public String keyWrods;
 
     @Override
     public int getLayoutRes() {
@@ -55,19 +52,19 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
     }
 
     @Override
-    public void initView() {
-
+    public void initView(Bundle savedInstanceState) {
+//        searchBtn = (Button) mView.findViewById(R.id.btn_search_read);
+//        unSearchBtn = (Button) mView.findViewById(R.id.btn_unsearch_read);
+//        searchValue_et = (EditText) mView.findViewById(R.id.et_searchvalue_read);
         //下拉刷新
         mSrl = (SwipeRefreshLayout) mView.findViewById(R.id.srl_read);
-
         //轮播图
-        carousel_vp = (WrapContentHeightViewpager) mView.findViewById(R.id.vp_read);
+//        carousel_vp = (WrapContentHeightViewpager) mView.findViewById(R.id.vp_read);
         vpAdapter = new ReadCarouselVpAdapter(getContext(), null);
-        carousel_vp.setAdapter(vpAdapter);
-
+//        carousel_vp.setAdapter(vpAdapter);
         //列表
         mRecycler = ((RecyclerView) mView.findViewById(R.id.recycler_read));
-        layoutManager = new FullyGridLayoutManager(getContext(), 3);
+        layoutManager = new GridLayoutManager(getContext(), 3);
         layoutManager.setOrientation(GridLayoutManager.VERTICAL);
         layoutManager.setSmoothScrollbarEnabled(true);
         mRecycler.setLayoutManager(layoutManager);
@@ -80,17 +77,19 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
     @Override
     public void onResume() {
         super.onResume();
-        mHandler.sendEmptyMessageDelayed(NEXTIMAGE, CAROUSELDELAYTIME);
+//        mHandler.sendEmptyMessageDelayed(NEXTIMAGE, CAROUSELDELAYTIME);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mHandler.removeMessages(NEXTIMAGE);
+//        mHandler.removeMessages(NEXTIMAGE);
     }
 
     @Override
     public void initListener() {
+//        searchBtn.setOnClickListener(this);
+//        unSearchBtn.setOnClickListener(this);
         mSrl.setOnRefreshListener(this);
         mRecycler.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -103,7 +102,6 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
                 if (isLoading && newState == 0 && (visible + past) >= total) {
                     isLoading = false;
                     pageNum++;
-                    Log.e(TAG, "加载页面：pageNum-->>>" + pageNum);
                     mPresenter.loadData();
                 }
             }
@@ -112,15 +110,12 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
 
     @Override
     public void showLoading(String title) {
-        dialog = MyProgressDialog.show(getContext(), title, false, null);
+
     }
 
     @Override
     public void stopLoading() {
         mSrl.setRefreshing(false);
-        if (dialog != null) {
-            dialog.dismiss();
-        }
         isLoading = true;
     }
 
@@ -132,6 +127,11 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
     @Override
     public String getPageNum() {
         return String.valueOf(pageNum);
+    }
+
+    @Override
+    public String getKeyWord() {
+        return keyWrods;
     }
 
     @Override
@@ -147,18 +147,30 @@ public class ReadFragment extends BaseFragment implements IReadView, SwipeRefres
     @Override
     public void onRefresh() {
         pageNum = 1;
-        Log.e(TAG, "pageNum: " + pageNum);
         mPresenter.refreshData();
     }
 
+
     @Override
-    public boolean handleMessage(Message msg) {
-        switch (msg.what) {
-            case NEXTIMAGE:
-                carousel_vp.setCurrentItem(carousel_vp.getCurrentItem() + 1);
-                mHandler.sendEmptyMessageDelayed(NEXTIMAGE, CAROUSELDELAYTIME);
-                break;
-        }
-        return false;
+    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.btn_search_read:
+//                String searchValue = searchValue_et.getText().toString().trim();
+//                if (!CommenUtils.isEmpty(searchValue)) {
+//                    ToastUtils.showText(getContext(), "请输入检索内容..");
+//                    return;
+//                }
+//                keyWrods = searchValue;
+//                pageNum = 1;
+//                mPresenter.refreshData();
+//                break;
+//
+//            case R.id.btn_unsearch_read://退出检索
+//                searchValue_et.setText("");
+//                keyWrods = "";
+//                pageNum = 1;
+//                mPresenter.refreshData();
+//                break;
+//        }
     }
 }

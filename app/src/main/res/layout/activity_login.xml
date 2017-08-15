@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_login"
+    tools:context="com.hebth.mobilelibrary.ui.login.LoginActivity">
+
+    <!--登录区域-->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/rl_login_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        app:layout_heightPercent="30%"
+        app:layout_marginBottomPercent="12%"
+        app:layout_marginLeftPercent="20%"
+        app:layout_marginRightPercent="20%">
+
+        <LinearLayout
+            android:id="@+id/ll_username_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_input_welcome"
+            app:layout_heightPercent="25%">
+
+            <EditText
+                android:id="@+id/username_welcome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="用户名"
+                android:singleLine="true"
+                android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_password_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/ll_username_welcome"
+            android:background="@drawable/bg_input_welcome"
+            app:layout_heightPercent="25%"
+            app:layout_marginTopPercent="6%">
+
+            <EditText
+                android:id="@+id/password_welcome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="密码"
+                android:password="true"
+                android:singleLine="true"
+                android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_login_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/ll_password_welcome"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_button_welcome"
+            android:text="登   录"
+            android:textColor="@android:color/white"
+            android:textSize="18dp"
+            app:layout_heightPercent="25%"
+            app:layout_marginTopPercent="6%" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

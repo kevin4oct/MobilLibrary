@@ -1,8 +1,10 @@
 package com.hebth.mobilelibrary.ui.main.fragments.home.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,7 +21,7 @@ import java.util.List;
  * homeFragment新闻公告的适配器
  */
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> implements View.OnClickListener {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> implements View.OnClickListener, View.OnTouchListener {
 
     private List<NewsBean> mList;
     private LayoutInflater inflater;
@@ -66,6 +68,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> im
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_rv_news, parent, false);
         view.setOnClickListener(this);
+        view.setOnTouchListener(this);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -87,6 +90,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> im
     public void onClick(View v) {
         int position = mRecycler.getChildAdapterPosition(v);
         context.startActivity(NewsDetailActivity.getNewsDetailIntent(context, mList.get(position)));
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                v.setBackgroundColor(context.getResources().getColor(R.color.colorPrimaryDark));
+                break;
+            default:
+                v.setBackground(null);
+                break;
+        }
+        return false;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

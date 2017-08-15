@@ -35,14 +35,14 @@ public class EbookVpAdapter extends FragmentPagerAdapter {
         return mList.size();
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "阅读";
-            case 1:
-                return "书架";
-        }
-        return null;
-    }
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        switch (position) {
+//            case 0:
+//                return "阅读";
+//            case 1:
+//                return "书架";
+//        }
+//        return null;
+//    }
 }

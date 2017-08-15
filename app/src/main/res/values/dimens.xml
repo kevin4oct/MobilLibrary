@@ -5,4 +5,7 @@
     <dimen name="vp_height_home">180dp</dimen>
     <dimen name="margin_startandend_home">15dp</dimen>
     <dimen name="appBarSize">45dp</dimen>
+    <dimen name="margin_start_end_userinfo">25dp</dimen>
+
+
 </resources>

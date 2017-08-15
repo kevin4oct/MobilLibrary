@@ -5,16 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/library"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_marginLeftPercent="4%" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
     <!--按钮区-->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FAFCFB"
         android:orientation="horizontal"
-        app:layout_heightPercent="15%"
-        app:layout_marginLeftPercent="10%"
-        app:layout_marginRightPercent="10%"
-        app:layout_marginTopPercent="10%">
+        app:layout_heightPercent="12%"
+        app:layout_widthPercent="86%"
+        android:layout_gravity="center_horizontal"
+        app:layout_marginTopPercent="12%">
 
         <!--本馆简介-->
         <ImageView
@@ -30,11 +45,24 @@
             android:id="@+id/iv_guide_library"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@mipmap/btn_guide_library" />
 
-        <!--办证指南-->
+    </LinearLayout>
+
+    <!--按钮区-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_heightPercent="12%"
+        app:layout_widthPercent="86%"
+        android:layout_gravity="center_horizontal"
+        app:layout_marginTopPercent="3%">
+
+        <!--读者须知-->
         <ImageView
             android:id="@+id/iv_notice_library"
             android:layout_width="0dp"
@@ -43,11 +71,12 @@
             android:scaleType="fitXY"
             android:src="@mipmap/btn_notice_library" />
 
-        <!--办证指南-->
+        <!--开馆时间-->
         <ImageView
             android:id="@+id/iv_time_library"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@mipmap/btn_time_library" />
@@ -55,36 +84,30 @@
     </LinearLayout>
 
     <!--地图区-->
-    <com.zhy.android.percent.support.PercentFrameLayout
-        android:layout_width="match_parent"
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/bg_map_library"
-        android:padding="1dp"
-        app:cardCornerRadius="12dp"
-        app:layout_heightPercent="40%"
-        app:layout_marginLeftPercent="10%"
-        app:layout_marginRightPercent="10%"
-        app:layout_marginTopPercent="5%">
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_heightPercent="45%"
+        app:layout_marginTopPercent="3%"
+        app:layout_widthPercent="86%">
 
-        <android.support.v7.widget.CardView
+        <com.amap.api.maps2d.MapView
+            android:id="@+id/map_library"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="12dp">
+            android:layout_height="match_parent" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@mipmap/map_library" />
-        </android.support.v7.widget.CardView>
-    </com.zhy.android.percent.support.PercentFrameLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="30dp"
-        android:text="地址：河北省石家庄市桥东区建设北大街４４号\n公交路线：1路；5路；6路；10路；12路；32路；114路\n邮编：邮编：050011"
-        app:layout_heightPercent="15%" />
+        <ImageView
+            android:id="@+id/iv_location_library"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="10dp"
+            android:src="@mipmap/icon_location"/>
+    </android.support.v7.widget.CardView>
 
 
 </com.zhy.android.percent.support.PercentLinearLayout>

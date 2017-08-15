@@ -34,9 +34,9 @@ public class ReadPresenter {
      */
     public void loadData() {
 
-        mView.showLoading("正在加载，请稍后..");
+        mView.showLoading("努力加载中..");
 
-        mModel.getContainerData(mView.getPageNum(), new OnReadContainerListener() {
+        mModel.getContainerData(mView.getPageNum(),mView.getKeyWord(), new OnReadContainerListener() {
             @Override
             public void success(ReadFragmentBean bean) {
 
@@ -62,7 +62,7 @@ public class ReadPresenter {
      */
     public void refreshData() {
 
-        mView.showLoading("正在刷新，请稍后..");
+        mView.showLoading("正在刷新..");
 
         //加载ViewPager的内容
         mModel.getCarouselData(new OnReadCarouselListener() {
@@ -91,7 +91,7 @@ public class ReadPresenter {
         });
 
         //加载RecyclerView 的内容
-        mModel.getContainerData("1", new OnReadContainerListener() {
+        mModel.getContainerData("1",mView.getKeyWord(), new OnReadContainerListener() {
 
             @Override
             public void success(ReadFragmentBean bean) {

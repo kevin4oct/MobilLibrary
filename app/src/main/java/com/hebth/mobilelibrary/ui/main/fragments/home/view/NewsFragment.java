@@ -1,5 +1,6 @@
 package com.hebth.mobilelibrary.ui.main.fragments.home.view;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,7 +39,7 @@ public class NewsFragment extends BaseFragment {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mRecycler = (RecyclerView) mView.findViewById(R.id.recycler_news);
         LinearLayoutManager layout = new LinearLayoutManager(getContext());
         mRecycler.setLayoutManager(layout);
@@ -66,7 +67,7 @@ public class NewsFragment extends BaseFragment {
     public void getDateFormNet(final int fun) {
         NewsRequestParams entity = new NewsRequestParams();
         entity.type = "" + 1;
-        entity.pageCount = "" + AppConstant.pageCoount_news;
+        entity.pageCount = "" + AppConstant.pageCount_news;
         entity.page = "" + page;
 
         x.http().post(entity, new Callback.CommonCallback<List<NewsBean>>() {

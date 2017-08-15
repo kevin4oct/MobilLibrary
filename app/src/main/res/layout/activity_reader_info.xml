@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hebth.mobilelibrary.ui.readerinfo.ReaderInfoActivity">
+    <!--toolbar-->
+    <include
+        android:id="@+id/toolbar_readerinfo"
+        layout="@layout/common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appBarSize" />
+
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/bg_userinfo"
+        android:orientation="vertical"
+        app:layout_heightPercent="80%"
+        app:layout_marginTopPercent="15%"
+        app:layout_widthPercent="80%">
+
+        <!--登录名-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="登录名称:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_username_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--真实姓名-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="真实姓名:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_realnamer_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--性别-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="您的性别:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_sex_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--电子邮箱-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="电子邮箱:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_email_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--联系电话-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="联系电话:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_telephone_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--可借阅量-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="可借阅量:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_maxborrowcount_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--借阅次数-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="借阅次数:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_borrowtimes_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--已借阅量-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="已借阅量:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_borrowedcount_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--已预约量-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="已预约量:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_ordercount_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--超期图书-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="超期图书:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_overtimecount_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--上次登录时间-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:text="上次登录时间:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_lastlogintime_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!--我的地址-->
+        <LinearLayout
+            style="@style/userinfo_ll"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="我的地址:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_address_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+    </com.zhy.android.percent.support.PercentLinearLayout>
+
+</com.zhy.android.percent.support.PercentRelativeLayout>
+

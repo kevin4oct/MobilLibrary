@@ -6,6 +6,7 @@
     <string name="mine">我的</string>
     <string name="open">打开</string>
     <string name="close">关闭</string>
+    <string name="net_error">发生网络错误，请刷新重试..</string>
 
     <!--二维码扫描-->
     <string name="viewfinderview_status_text1">将二维码/条码放入取景框内</string>
@@ -129,4 +130,7 @@
         <item>出版社</item>
     </string-array>
     <string name="title_activity_news_detail">NewsDetailActivity</string>
+    <string name="version">v1.0.0</string>
+    <string name="company_url">公司网址：http://www.hbthwl.net</string>
+    <string name="company_tel">客服电话：0311-83617820</string>
 </resources>

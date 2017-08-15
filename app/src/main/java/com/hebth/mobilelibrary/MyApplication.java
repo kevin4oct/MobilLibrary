@@ -3,6 +3,8 @@ package com.hebth.mobilelibrary;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import org.xutils.x;
 
 /**
@@ -19,6 +21,7 @@ public class MyApplication extends Application {
         this.context = this;
         x.Ext.init(this);
         x.Ext.setDebug(true);
+        Fresco.initialize(this);
     }
 
     public static Context getContext() {

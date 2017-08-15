@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hebth.mobilelibrary.ui.setting.SettingActivity">
+
+    <include
+        android:id="@+id/toolbar_setting"
+        layout="@layout/common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appBarSize" />
+
+    <!--评分-->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/rl_pingfen_setting"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/toolbar_setting"
+        android:background="@android:color/white"
+        app:layout_heightPercent="12%">
+
+        <TextView
+            android:id="@+id/tv_pingfen_setting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="评分"
+            app:layout_paddingLeftPercent="10%" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_item"
+            app:layout_heightPercent="30%"
+            app:layout_marginRightPercent="6%"
+            app:layout_widthPercent="10%" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+    <!--华丽的分割线-->
+    <FrameLayout
+        android:id="@+id/fl_fengexian_setting"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/rl_pingfen_setting"
+        android:background="@android:color/darker_gray"
+        app:layout_marginLeftPercent="8%" />
+
+    <!--清除缓存-->
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:id="@+id/rl_clean_setting"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/fl_fengexian_setting"
+        android:background="@android:color/white"
+        app:layout_heightPercent="12%">
+
+        <TextView
+            android:id="@+id/tv_clean_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="清除缓存"
+            app:layout_paddingLeftPercent="10%" />
+
+        <TextView
+            android:id="@+id/tv_cacheSize_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_clean_setting"
+            android:text="2.54M"
+            android:textSize="12sp"
+            app:layout_paddingLeftPercent="12%" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_item"
+            app:layout_heightPercent="30%"
+            app:layout_marginRightPercent="6%"
+            app:layout_widthPercent="10%" />
+
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+    <!--华丽的分割线-->
+    <FrameLayout
+        android:id="@+id/fl_fengexian02_setting"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/rl_clean_setting"
+        android:background="@android:color/darker_gray"
+        app:layout_marginLeftPercent="8%" />
+
+    <Button
+        android:id="@+id/btn_logout_setting"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/fl_fengexian02_setting"
+        android:layout_centerHorizontal="true"
+        android:text="退出登录"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="80%" />
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

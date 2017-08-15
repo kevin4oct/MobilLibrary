@@ -6,61 +6,53 @@
     android:orientation="vertical"
     tools:context="com.hebth.mobilelibrary.ui.main.activitys.MainActivity">
 
-    <include
-        android:id="@+id/toolbar_main"
-        layout="@layout/common_toolbar"
+    <FrameLayout
+        android:id="@+id/container_main"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/appBarSize" />
+        android:layout_height="0dp"
+        android:layout_weight="11" />
 
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawerlayout_main"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"/>
 
-        <include layout="@layout/custom_main" />
+    <RadioGroup
+        android:id="@+id/control_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F9F9F9"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/right_drawer"
-            android:layout_width="220dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="@android:color/darker_gray"
-            android:gravity="center_horizontal">
+        <RadioButton
+            android:id="@+id/rb_home_control"
+            style="@style/radiobutton_main"
+            android:checked="true"
+            android:drawableTop="@drawable/selector_main_home"
+            android:text="@string/home"
+            android:textColor="@drawable/selector_main_text" />
 
-            <ImageView
-                android:id="@+id/iv_head_meum"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="60dp"
-                android:src="@mipmap/ic_launcher" />
+        <RadioButton
+            android:id="@+id/rb_ebook_control"
+            style="@style/radiobutton_main"
+            android:drawableTop="@drawable/selector_main_read"
+            android:textColor="@drawable/selector_main_text"
+            android:text="@string/ebook" />
 
-            <TextView
-                android:id="@+id/tv_username_meum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iv_head_meum"
-                android:layout_centerHorizontal="true"
-                android:text="张三三"
-                android:textColor="@android:color/white"
-                android:textSize="24sp" />
+        <RadioButton
+            android:id="@+id/rb_library_control"
+            style="@style/radiobutton_main"
+            android:drawableTop="@drawable/selector_main_library"
+            android:textColor="@drawable/selector_main_text"
+            android:text="@string/library" />
 
-            <ListView
-                android:id="@+id/lv_meum"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/tv_username_meum"
-                android:entries="@array/menu_main" />
-
-            <TextView
-                android:id="@+id/tv_version_meum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:text="v 1.0.1" />
-        </RelativeLayout>
-
-    </android.support.v4.widget.DrawerLayout>
+        <RadioButton
+            android:id="@+id/rb_mine_control"
+            style="@style/radiobutton_main"
+            android:drawableTop="@drawable/selector_main_mine"
+            android:textColor="@drawable/selector_main_text"
+            android:text="@string/mine" />
+    </RadioGroup>
 
 </LinearLayout>
